@@ -29,41 +29,45 @@
             <div class="column col-md-9">
                 <!-- top stocks header-->
                 <div class="row">
-                    <h4>Top Stocks</h4>
+                    <div class="col-md-12">
+                        <h4>Top Stocks</h4>
+                    </div>
                 </div>
                 <!-- top stocks to be displayed with individually named cards below -->
                 <div class="row">
-                        <div class="col-md-4 card top-stock-one">
-                            card 1
-                        </div>
+                    <div class="col-md-4 card top-stock-one">
+                        card 1
+                    </div>
 
-                        <div class="col-md-4 card top-stock-two">
-                            card 2
-                        </div>
+                    <div class="col-md-4 card top-stock-two">
+                        card 2
+                    </div>
 
-                        <div class="col-md-4 card top-stock-three">
-                            card 3
-                        </div>    
+                    <div class="col-md-4 card top-stock-three">
+                        card 3
+                    </div>    
 
-                        <div class="col-md-4 card top-stock-four">
-                            card 4
-                        </div>
+                    <div class="col-md-4 card top-stock-four">
+                        card 4
+                    </div>
 
-                        <div class="col-md-4 card top-stock-five">
-                            card 5
-                        </div>
+                    <div class="col-md-4 card top-stock-five">
+                        card 5
+                    </div>
 
-                        <div class="col-md-4 card top-stock-six">
-                            card 6
-                        </div>
+                    <div class="col-md-4 card top-stock-six">
+                        card 6
+                    </div>
                 </div>
                 <!-- description of site -->
                 <div class="row">
                     <section class="col-md-8">
                         <h4>Description Title</h4>
                         <p>
-                            To use this site, enter the name of a stock in the search field and click Go. 
-                            Your stock will be displayed with the daily avg, daily hi, daily low, starting price, and ending price. 
+                            Welcome to Stock Watch!
+                            <br>
+                            To use our stock portfolio page, enter the symbol of a stock in the search field and click Search.
+                            Your stock will be displayed with the Daily Average, Daily High, Daily Low, Opening Price, and Ending Price. 
                             To clear the field click the Clear button.
                         </p>
                         <hr>
@@ -76,11 +80,13 @@
                 </div>
                 <!-- search field, go button, clear button -->
                 <div class="row">
-                    <h4>Search here</h4>
-                    <!-- ***HERE*** input box and buttons needs to be placed bottom of h4 headings -->
-                    <input type="text" placeholder="Search Your Stock Here" name="search">
-                    <button type="submit">Submit</button>
-                    <button type="reset">Clear</button>
+                    <div class="col-md-10">
+                        <h4>Search here</h4>
+                        <!-- ***HERE*** input box and buttons needs to be placed bottom of h4 headings -->
+                        <input type="text" placeholder="Search Your Stock Here" name="search">
+                        <button type="submit">Search</button>
+                        <button type="reset">Clear</button>
+                    </div>
                 </div>
             </div>   
              
@@ -88,7 +94,7 @@
             <div class="column col-md-3">
                 <h4>Currency Exchange</h4>
                 <h6>One U.S. Dollar equals</h6>
-                    <table>
+                    <table class="currency-table">
                         <tr>
                             <th>Currency</th>
                             <th>Value</th>
@@ -117,7 +123,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h4>Your Search History</h4>
-                <table>
+                <table class="stock-table">
                     <tr>
                         <th>Stock Name</th>
                         <th>Daily High</th>
