@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="Description" content="Enter your description here" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet"
@@ -18,54 +19,60 @@
 </head>
 
 <body>
-    <div class="jumbotron">
-        <h1 class="animate__animated animate__backInDown">Stock Watch</h1>
-        <p class="animate__animated animate__lightSpeedInLeft">
-            Welcome to Stock Watch
-        </p>
-        <!-- ***HERE*** maybe we can put like moment.js to see our current time. -->
+    <div class="hero is-light">
+        <div class="hero-body">
+            <div class="container">
+                <img src="assets/css/images/project-1-logo.png" width="120">
+                <h1 class="title is-1 animate__animated animate__backInDown">Stock Watch</h1>
+                <p class="subtitle animate__animated animate__lightSpeedInLeft">
+                    Welcome to Stock Watch
+                </p>
+                <!-- ***HERE*** maybe we can put like moment.js to see our current time. -->
+            </div>
+        </div>
     </div>
 
     <div class="container">
-        <div class="row">
+        <div class="columns">
             <!-- left hand column-->
-            <div class="column col-md-9">
+            <div class="column is-9">
                 <!-- top stocks header-->
-                <div class="row">
-                    <div class="col-md-12">
-                        <h4>Top Stocks</h4>
+                <div class="columns">
+                    <div class="column is-12">
+                        <h4 class="title is-4">Top Stocks</h4>
                     </div>
                 </div>
                 <!-- top stocks to be displayed with individually named cards below -->
-                <div class="row">
-                    <div class="col-md-4 card top-stock-one">
+                <div class="columns">
+                    <div class="column is-4 card top-stock-one">
                         card 1
                     </div>
 
-                    <div class="col-md-4 card top-stock-two">
+                    <div class="column is-4 card top-stock-two">
                         card 2
                     </div>
 
-                    <div class="col-md-4 card top-stock-three">
+                    <div class="column is-4 card top-stock-three">
                         card 3
                     </div>    
-
-                    <div class="col-md-4 card top-stock-four">
+                </div>
+                <div class="columns">
+                    <div class="column is-4 card top-stock-four">
                         card 4
                     </div>
 
-                    <div class="col-md-4 card top-stock-five">
+                    <div class="column is-4 card top-stock-five">
                         card 5
                     </div>
 
-                    <div class="col-md-4 card top-stock-six">
+                    <div class="column is-4 card top-stock-six">
                         card 6
                     </div>
                 </div>
                 <!-- description of site -->
-                <div class="row">
-                    <section class="col-md-8">
-                        <h4>Description Title</h4>
+                <div class="columns">
+                    <section class="column is-8">
+                        <h4 class="title is-4">Description Title</h4>
                         <p>
                             Welcome to Stock Watch!
                             <br>
@@ -82,9 +89,9 @@
                     </section>
                 </div>
                 <!-- search field, go button, clear button -->
-                <div class="row">
-                    <div class="col-md-10">
-                        <h4>Search here</h4>
+                <div class="columns">
+                    <div class="column is-10">
+                        <h4 class="title is-4">Search here</h4>
                         <!-- ***HERE*** input box and buttons needs to be placed bottom of h4 headings -->
                         <input type="text" placeholder="Search Your Stock Here" name="search">
                         <button type="submit">Search</button>
@@ -94,9 +101,9 @@
             </div>   
              
             <!-- right hand column to include currency exchange -->
-            <div class="column col-md-3">
-                <h4>Currency Exchange</h4>
-                <h6>One U.S. Dollar equals</h6>
+            <div class="column is-3">
+                <h4 class="title is-4">Currency Exchange</h4>
+                <h6 class="title is-6">One U.S. Dollar equals</h6>
                     <table class="currency-table">
                         <tr>
                             <th>Currency</th>
@@ -123,9 +130,9 @@
         </div>    
         
         <!-- results header - to include daily hi, daily low, opening price, closing price, daily avg -->
-        <div class="row">
-            <div class="col-md-12">
-                <h4>Your Search History</h4>
+        <div class="columns">
+            <div class="column is-12">
+                <h4 class="title is-4">Your Search History</h4>
                 <table class="stock-table">
                     <tr>
                         <th>Stock Name</th>
