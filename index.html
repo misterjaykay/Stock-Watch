@@ -18,6 +18,89 @@
     <div class="jumbotron">
         <h1>Stock Watch</h1>
     </div>
+
+    <div class="container">
+        <div class="row">
+            <!-- left hand column-->
+            <div class="column col-md-9">left hand column
+                <!-- top stocks header-->
+                <div class="row">Top Stocks</div>
+                <!-- top stocks to be displayed with individually named cards below -->
+                <div class="row">
+                        <div class="col-md-4 card top-stock-one">card 1</div>
+                        <div class="col-md-4 card top-stock-two">card 2</div>
+                        <div class="col-md-4 card top-stock-three">card 3</div>    
+                        <div class="col-md-4 card top-stock-four">card 4</div>
+                        <div class="col-md-4 card top-stock-five">card 5</div>
+                        <div class="col-md-4 card top-stock-six">card 6</div>
+                </div>
+                <!-- description of site -->
+                <div class="row">
+                    <section class="col-md-8">To use this site, enter the name of a stock in the search field and click Go. Your stock will be displayed with the daily avg, daily hi, daily low, starting price, and ending price. To clear the field click the Clear button. </section>
+                </div>
+                <!-- search field, go button, clear button -->
+                <div class="row">
+                    <input type="text" placeholder="Search.." name="search">
+                    <button type="submit">Submit</button>
+                    <button type="reset">Clear</button>
+                </div>
+            </div>   
+             
+            <!-- right hand column to include currency exchange -->
+            <div class="column col-md-3">currency exchange
+                <h4>One U.S. Dollar equals</h4>
+                    <table>
+                        <tr>
+                            <th>Currency</th>
+                            <th>Value</th>
+                        </tr>
+                        <tr>
+                            <td>Loonies</td>
+                            <td>$1.05</td>
+                        </tr>
+                        <tr>                            
+                            <td>Pesos</td>
+                            <td>$5.00</td>
+                        </tr>
+                        <tr>
+                            <td>Euros</td>
+                            <td>$0.75</td>
+                        </tr>
+                        <tr>
+                            <td>Drachmae</td>
+                            <td>$200</td>
+                        </tr>                    
+                    </table>
+            </div>                   
+        </div>    
+        
+        <!-- results header - to include daily hi, daily low, opening price, closing price, daily avg -->
+        <div class="row">returned results header row</div>
+            <div class="col-md-12"></div>
+                <table>
+                    <tr>
+                        <th>Stock Name</th>
+                        <th>Daily High</th>
+                        <th>Daily Low</th>
+                        <th>Opening Price</th>
+                        <th>Closing Price</th>
+                        <th>Daily Avg</th>
+                    </tr>
+              <!-- returned results from search -->   
+                    <tr>
+                        <td>Apple</td>
+                        <td>$500</td>
+                        <td>$400</td>
+                        <td>$450</td>
+                        <td>$475</td>
+                        <td>$466</td>
+                    </tr>
+
+                </table>
+        
+      
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
