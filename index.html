@@ -17,6 +17,10 @@
 <body>
     <div class="jumbotron">
         <h1>Stock Watch</h1>
+        <p>
+            Welcome to Stock Watch
+        </p>
+        <!-- ***HERE*** maybe we can put like moment.js to see our current time. -->
     </div>
 
     <div class="container">
@@ -24,7 +28,9 @@
             <!-- left hand column-->
             <div class="column col-md-9">
                 <!-- top stocks header-->
-                <div class="row">Top Stocks</div>
+                <div class="row">
+                    <h4>Top Stocks</h4>
+                </div>
                 <!-- top stocks to be displayed with individually named cards below -->
                 <div class="row">
                         <div class="col-md-4 card top-stock-one">
@@ -54,13 +60,24 @@
                 <!-- description of site -->
                 <div class="row">
                     <section class="col-md-8">
-                        To use this site, enter the name of a stock in the search field and click Go. 
-                        Your stock will be displayed with the daily avg, daily hi, daily low, starting price, and ending price. 
-                        To clear the field click the Clear button. 
+                        <h4>Description Title</h4>
+                        <p>
+                            To use this site, enter the name of a stock in the search field and click Go. 
+                            Your stock will be displayed with the daily avg, daily hi, daily low, starting price, and ending price. 
+                            To clear the field click the Clear button.
+                        </p>
+                        <hr>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+                            Sit, ducimus rem. Quidem, asperiores ipsam deserunt quaerat quas nemo dignissimos earum officiis delectus. 
+                            Blanditiis sapiente, ad ullam tempore exercitationem rem corrupti.
+                        </p>
                     </section>
                 </div>
                 <!-- search field, go button, clear button -->
                 <div class="row">
+                    <h4>Search here</h4>
+                    <!-- ***HERE*** input box and buttons needs to be placed bottom of h4 headings -->
                     <input type="text" placeholder="Search Your Stock Here" name="search">
                     <button type="submit">Submit</button>
                     <button type="reset">Clear</button>
@@ -69,7 +86,8 @@
              
             <!-- right hand column to include currency exchange -->
             <div class="column col-md-3">
-                <h4>One U.S. Dollar equals</h4>
+                <h4>Currency Exchange</h4>
+                <h6>One U.S. Dollar equals</h6>
                     <table>
                         <tr>
                             <th>Currency</th>
@@ -98,6 +116,7 @@
         <!-- results header - to include daily hi, daily low, opening price, closing price, daily avg -->
         <div class="row">
             <div class="col-md-12">
+                <h4>Your Search History</h4>
                 <table>
                     <tr>
                         <th>Stock Name</th>
