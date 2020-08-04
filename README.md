@@ -27,4 +27,4 @@ cda2d30be7msheecc834c925cce9p1570eejsnfe47e9cebf8d </p> -->
 
 <p> Bloomberg News For Stock Finances and Stastics 
 https://bloomberg-market-and-financial-news.p.rapidapi.com/stock/get-financials?id=aapl%253Aus
-cda2d30be7msheecc834c925cce9p1570eejsnfe47e9cebf8d </p>
+cda2d30be7msheecc834c925cce9p1570eejsnfe47e9cebf8d </p>vbdh
