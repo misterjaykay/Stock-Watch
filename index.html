@@ -5,12 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="Description" content="Enter your description here" />
+    <meta name="Description" content="Stock Watch allows you to quickly search for any stock you want, and compare it against other in an easily readable format to give you and your finances the upper hand." />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
     <link rel="stylesheet" href="assets/css/style.css">
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
     <title>Stock Watch</title>
 </head>
@@ -36,28 +38,19 @@
                <!-- description -->
                <div class="columns">
                     <div class="column">
-
                         <section class="section box">
-                    
-                            <h4 class="title is-4">Description Title</h4>
-                            <p>
-                                Welcome to Stock Watch!
-                                <br>
-                                To use our stock portfolio page, enter the symbol of a stock in the search field and
-                                click
-                                Search.
-                                Your stock will be displayed with the Daily Average, Daily High, Daily Low, Opening
-                                Price,
-                                and Ending Price.
-                                To clear the field click the Clear button.
+                            <h4 class="title is-4">Welcome to Stock Watch!</h4>
+                            <p>                                
+                                This page is designed to allow you to search the stocks of your choice and display pertinent information about them. Once a stock is searched for, financial information about that stock, as well as the latest article referencing that stock will appear.
                             </p>
-                            <hr>
+                            <br>
                             <p>
-                                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                                Sit, ducimus rem. Quidem, asperiores ipsam deserunt quaerat quas nemo dignissimos earum
-                                officiis delectus.
-                                Blanditiis sapiente, ad ullam tempore exercitationem rem corrupti.
-                            </p>                         
+                                 Search using a stock's ticker symbol. If you don't know a stock's designated symbol, don't worry! You can look it up using our Stock Symbol Look-Up feature below. 
+                            </p>
+                            <br>            
+                            <p>
+                                Finally, we've included a quick Currency Exchange reference on the right hand side of the page that displays the current exchange rate of the top 5 international currencies.  
+                            </p>            
                         </section>
                     </div>
                 </div>          
@@ -68,7 +61,7 @@
                     <div class="column is-half">
                         <section class="section box">
 
-                            <h4 class="title is-4">Look Up Stock Symbol by Company Name</h4>
+                            <h4 class="title is-4">Stock Symbol Look-Up</h4>
                             <input class="user-input-symbol" type="text" placeholder="Search Stock Symbol Here" name="search">
                             <button class="search-btn-symbol" type="submit">Search</button>
                             <button class="clear-btn-symbol" type="reset">Clear</button>
@@ -104,7 +97,7 @@
                 <div class="columns">
                     <div class="column is-6">
                         <section class="section box">
-                            <h4 class="title is-4">Search Using Stock Symbol</h4>
+                            <h4 class="title is-4">Search Stocks</h4>
                             <input class="user-input" type="text" placeholder="Enter Stock Symbol" name="search">
                             <button class="search-btn" type="submit">Search</button>
                             <button class="clear-btn" type="reset">Clear</button>
@@ -161,7 +154,6 @@
             </div>
         </div>
     </div>
-
 
     <!-- lower container: returned results header, returned results area -->
     <div class="container mb-5 mt-3">
