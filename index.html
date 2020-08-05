@@ -9,8 +9,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
-        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
     <link rel="stylesheet" href="assets/css/style.css">
 
@@ -18,13 +16,15 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container mb-5">
         <div class="hero is-light is-info">
             <div class="hero-body">
-                <img src="assets/css/images/project-1-logo.png" width="120"
-                    class="animate__animated animate__slideInDown">
-                <h1 class="title is-1 animate__animated animate__slideInLeft animate__slow">Stock Watch</h1>
-                <p class="subtitle animate__animated animate__slideInRight animate__slow">Welcome to Stock Watch</p>
+                <div class="container">
+                    <img src="assets/images/project-1-logo.png" width="120"
+                        class="animate__animated animate__slideInDown">
+                    <h1 class="title is-1 animate__animated animate__slideInLeft animate__slow">Stock Watch</h1>
+                    <p class="subtitle animate__animated animate__slideInRight animate__slow">Welcome to Stock Watch</p>
+                </div>
             </div>
         </div>
     </div>
@@ -34,9 +34,11 @@
             <!-- left hand column-->
             <div class="column is-9">
                <!-- description -->
-                <section class="section box">
-                    <div class="columns">
-                        <section class="column">
+               <div class="columns">
+                    <div class="column">
+
+                        <section class="section box">
+                    
                             <h4 class="title is-4">Description Title</h4>
                             <p>
                                 Welcome to Stock Watch!
@@ -58,59 +60,59 @@
                             </p>                         
                         </section>
                     </div>
-                </section>          
+                </div>          
                    
                 <!-- stock symbol search title, search bar, submit button -->
                 <div class="columns">
-                    <div class="column">   
+                
+                    <div class="column is-half">
                         <section class="section box">
-                            <div class="columns">
-                                <div class="column">
-                                    <h4 class="title">Look Up Stock Symbol by Company Name</h4>
-                                    <input class="user-input-symbol" type="text" placeholder="Search Your Stock Here" name="search">
-                                    <button class="search-btn-symbol" type="submit">Search</button>
-                                    <button class="clear-btn-symbol" type="reset">Clear</button>
-                                </div>
-                            </div>
-                        </section>
-                    </div>   
 
-                <!-- stock symbol search results display -->    
-                <div class="column">        
-                    <section class="section box">
-                        <div class="columns">
-                            <div class="column">
-                                <table class="stock-table-symbol">
-                                    <tr>
-                                        <th>Company Name</th>
-                                        <th>Stock Symbol</th>
-                                    </tr>
-                                    <!-- returned results from search -->
-                                    <tr>
-                                        <td>Apple</td>
-                                        <td>AAPL</td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </section>
-                </div>                         
-            </div>            
-               
+                            <h4 class="title is-4">Look Up Stock Symbol by Company Name</h4>
+                            <input class="user-input-symbol" type="text" placeholder="Search Stock Symbol Here" name="search">
+                            <button class="search-btn-symbol" type="submit">Search</button>
+                            <button class="clear-btn-symbol" type="reset">Clear</button>
+
+                        </section>
+                    </div>
+
+                    <!-- stock symbol search results display -->                 
+                    <div class="column is-half">
+                        <section class="section box">
+                            <table class="stock-table-symbol">
+                                <tr>
+                                    <th>Company Name</th>
+                                    <th>Stock Symbol</th>
+                                </tr>
+                                <!-- returned results from search -->
+                                <tr>
+                                    <td>Apple</td>
+                                    <td>AAPL</td>
+                                </tr>
+                                <tr>
+                                    <td>Apple</td>
+                                    <td>AAPL</td>
+                                </tr>     
+                                
+                            </table>
+                        </section>
+                    </div>
+                    
+                </div>
+                         
                 <!--search bar, submit button, clear button-->
-                 <section class="section box">
-                    <div class="columns">
-                        <div class="column is-10">
+                <div class="columns">
+                    <div class="column is-6">
+                        <section class="section box">
                             <h4 class="title is-4">Search Using Stock Symbol</h4>
-                            <!-- ***HERE*** input box and buttons needs to be placed bottom of h4 headings -->
-                            <input class="user-input" type="text" placeholder="Search Your Stock Here" name="search">
+                            <input class="user-input" type="text" placeholder="Enter Stock Symbol" name="search">
                             <button class="search-btn" type="submit">Search</button>
                             <button class="clear-btn" type="reset">Clear</button>
-                        </div>
+                        </section> 
                     </div>
-                </section> 
-            </div>
+                </div>
 
+            </div>
             <!-- right hand column to include currency exchange -->
             <div class="column is-3">
                 <section class="section box">
@@ -148,7 +150,6 @@
                         </div>
                     </div>
                     <!-- top stocks to be displayed with individually named cards below -->
-
                     <div class="columns is-multiline card-top-stock">
                     </div>
                 </section>
@@ -158,7 +159,7 @@
 
 
     <!-- lower container: returned results header, returned results area -->
-    <div class="container">
+    <div class="container mb-5 mt-3">
         <div class="columns is is-centered">
             <div class="column is-12">
                 <!-- section created to hold return results header and returned results area -->
@@ -182,6 +183,16 @@
             </div>
         </div>
     </div>
+    <div class="container mb-5">
+        <footer class="footer">
+            <div class="content has-text-centered">
+            <p>
+                Copyright &copy; 2020 <strong>StockWatch</strong>. All Rights Reserved
+            </p>
+            </div>
+        </footer>
+    </div>
+
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
