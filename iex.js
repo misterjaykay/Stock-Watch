@@ -1,15 +1,12 @@
 var baseURLIEX = "https://cloud.iexapis.com/stable/stock/"
 var apiToken = "/quote?token=pk_85904d0710804cf3865bcf30040ebec9"
-
+var index = 0;
 
 
 $(".search-btn").on("click", function(event) {
     console.log('click works');
    
     event.preventDefault();
-  
-    // Empty the region associated with the articles
-    //clear();
   
     // Build the query URL for the ajax request to the NYT API
     buildQueryURL();
@@ -33,6 +30,36 @@ $(".search-btn").on("click", function(event) {
         console.log("Opening Price: " + open);
         var close = response.close;
         console.log("Closing Price: " + close);
+
+        displayStock();
+
+        function displayStock(){
+            $(".stock-table").prepend('<tr class="stock-displayed'+index+'"><td>'+compName+'</td><td>$'+latestPrice+'</td><td>$'+high+'</td><td>$'+low+'</td><td>$'+open+'</td><td>$'+close+'</td><td><button class="clear-btn clear-btn'+index+'">Remove</button></td></tr>');
+            //creates a table row for the stock searched
+            //creates the company name, latest price, daily high, daily low, open price, close price,  data cell in the table
+            $(".table-heading").remove();
+            // removes previous table heading
+            $(".stock-table").prepend('<tr class="table-heading"><th>Stock Name</th><th>Latest Price</th><th>Daily High</th><th>Daily Low</th><th>Opening Price</th><th>Closing Price</th><th></th></tr>');
+            //create the table heading dynamically
+            index++
+        }
+
+        $(".clear-btn").on("click", function(event){
+            event.preventDefault();
+            console.log("click works")
+            var loopIndex = 20;
+
+            console.log("21:" +JSON.stringify(this.getAttribute("class")).charAt(21));
+            var removeIndex ="";
+            console.log("remove 1: "+removeIndex);
+            //initializes the removeIndex
+            while(JSON.stringify(this.getAttribute("class")).charAt(loopIndex)!=='"'){
+                removeIndex += JSON.stringify(this.getAttribute("class")).charAt(loopIndex);
+                loopIndex++;
+            }
+            console.log("Remove Index: " + removeIndex);
+            $(".stock-displayed"+removeIndex).remove();
+        });
     });
     
   });
@@ -68,3 +95,4 @@ $(".search-btn").on("click", function(event) {
     }
   }
 renderTopStock();
+
