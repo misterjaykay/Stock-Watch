@@ -118,27 +118,31 @@
                 <section class="section box">
                     <h4 class="current-time title is-4"></h4>
                     <h4 class="title is-4">Currency Exchange</h4>
-                    <h6 class="title is-6">One U.S. Dollar equals</h6>
+                    <h5 class="title is-6">One U.S Dollar Equals</h5>
                     <table class="currency-table">
                         <tr>
                             <th>Currency</th>
                             <th>Value</th>
                         </tr>
                         <tr>
-                            <td>Loonies</td>
-                            <td>$1.05</td>
+                            <td>EUR</td>
+                            <td id="euroRate"></td>
                         </tr>
                         <tr>
-                            <td>Pesos</td>
-                            <td>$5.00</td>
+                            <td>JPY</td>
+                            <td id="jpyRate"></td>
                         </tr>
                         <tr>
-                            <td>Euros</td>
-                            <td>$0.75</td>
+                            <td>GBP</td>
+                            <td id="gbpRate"></td>
                         </tr>
                         <tr>
-                            <td>Drachmae</td>
-                            <td>$200</td>
+                            <td>CAD</td>
+                            <td id="cadRate"></td>
+                        </tr>
+                        <tr>
+                            <td>KWD</td>
+                            <td id="kwdRate"></td>
                         </tr>
                     </table>
                 </section>
@@ -204,6 +208,7 @@
     <script src="./javascript.js"></script>
     <script src="moment.js"></script>
     <script src="./iex.js"></script>
+    <script src="./currency.js"></script>
 
 </body>
 
