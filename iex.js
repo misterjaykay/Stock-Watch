@@ -1,7 +1,8 @@
 var baseURLIEX = "https://cloud.iexapis.com/stable/stock/"
-var apiToken = "/quote?token=pk_85904d0710804cf3865bcf30040ebec9"
+var apiToken = "?token=pk_85904d0710804cf3865bcf30040ebec9"
 var index = 0;
-
+var quoteURL = "/quote"
+var newsURL = "/news/last/1"
 
 $(".search-btn").on("click", function(event) {
     console.log('click works');
@@ -9,7 +10,7 @@ $(".search-btn").on("click", function(event) {
     event.preventDefault();
   
     // Build the query URL for the ajax request to the NYT API
-    buildQueryURL();
+    buildiexURLs();
   
     // Make the AJAX request to the API - GETs the JSON data at the queryURL.
     // The data then gets passed as an argument to the updatePage function
@@ -31,15 +32,26 @@ $(".search-btn").on("click", function(event) {
         var close = response.close;
         console.log("Closing Price: " + close);
 
+        $.ajax({
+            url: newsURL,
+            method: "GET"
+        }).then(function(response1){
+            console.log(response1);
+            var headline= response1[0].headline;
+            console.log(headline);
+            var source = response1[0].source;
+            console.log(source);
+            var articleURL = response1[0].url;
+            console.log(articleURL);
         displayStock();
 
         function displayStock(){
-            $(".stock-table").prepend('<tr class="stock-displayed'+index+'"><td>'+compName+'</td><td>$'+latestPrice+'</td><td>$'+high+'</td><td>$'+low+'</td><td>$'+open+'</td><td>$'+close+'</td><td><button class="clear-btn clear-btn'+index+'">Remove</button></td></tr>');
+            $(".stock-table").prepend('<tr class="stock-displayed'+index+'"><td>'+compName+'</td><td>$'+latestPrice+'</td><td>$'+high+'</td><td>$'+low+'</td><td>$'+open+'</td><td>$'+close+'</td><td><a href="'+ articleURL +'">'+headline+'</a></td><td><button class="clear-btn clear-btn'+index+'">Remove</button></td></tr>');
             //creates a table row for the stock searched
             //creates the company name, latest price, daily high, daily low, open price, close price,  data cell in the table
             $(".table-heading").remove();
             // removes previous table heading
-            $(".stock-table").prepend('<tr class="table-heading"><th>Stock Name</th><th>Latest Price</th><th>Daily High</th><th>Daily Low</th><th>Opening Price</th><th>Closing Price</th><th></th></tr>');
+            $(".stock-table").prepend('<tr class="table-heading"><th>Stock Name</th><th>Latest Price</th><th>Daily High</th><th>Daily Low</th><th>Opening Price</th><th>Closing Price</th><th>Latest Article:</th><th></th></tr>');
             //create the table heading dynamically
             index++
         }
@@ -60,21 +72,24 @@ $(".search-btn").on("click", function(event) {
             console.log("Remove Index: " + removeIndex);
             $(".stock-displayed"+removeIndex).remove();
         });
+        });
     });
     
   });
 
-  function buildQueryURL(){
+  function buildiexURLs(){
     var userInput = $(".user-input").val().trim();
     console.log('userInput: ' + userInput);
-    iexURL = baseURLIEX + userInput + apiToken;
-    console.log(iexURL);
+    iexURL = baseURLIEX + userInput + quoteURL + apiToken;
+    console.log("iexURL: " + iexURL);
+    newsURL = baseURLIEX + userInput + newsURL + apiToken;
+    console.log("newsURL: "+ newsURL);
   }
 
   function renderTopStock() {
     var topStockList = ["AAPL", "TSLA", "AMZN", "MSFT", "NFLX", "NVDA" ];
     for (var i = 0; i < topStockList.length; i++) {
-      iexURL = baseURLIEX + topStockList[i] + apiToken;
+      iexURL = baseURLIEX + topStockList[i] + quoteURL + apiToken;
       $.ajax({
         url: iexURL,
         method: "GET"
