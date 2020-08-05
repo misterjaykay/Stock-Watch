@@ -18,8 +18,10 @@ pk_0cfc0e50d42841c68a7f5d7341030c9e </p>
 f758cc69266b8034dd382ca7e4fc1fd28c1d6672 </p> -->
 
 <p> Currency exchange 
-https://currency13.p.rapidapi.com/convert/10/USD/INR
-cda2d30be7msheecc834c925cce9p1570eejsnfe47e9cebf8d </p>
+http://data.fixer.io/api/latest?access_key=0b1ad822628e700dd37e59cab6cecb62
+
+API key: 0b1ad822628e700dd37e59cab6cecb62
+</p>
 
 <!-- <p> weather api 
 weather338.p.rapidapi.com
@@ -28,3 +30,8 @@ cda2d30be7msheecc834c925cce9p1570eejsnfe47e9cebf8d </p> -->
 <p> Bloomberg News For Stock Finances and Stastics 
 https://bloomberg-market-and-financial-news.p.rapidapi.com/stock/get-financials?id=aapl%253Aus
 cda2d30be7msheecc834c925cce9p1570eejsnfe47e9cebf8d </p>vbdh
+
+
+<!-- Need to grab the data from the stock api based on the key term -->
+<!-- display prepend right underneath each other -->
+<!-- make sure the api keys work the way they're supposed to: google check -->
