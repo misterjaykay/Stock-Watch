@@ -82,7 +82,16 @@ $(".search-btn").on("click", function(event) {
         cardH4.text(response.companyName);
 
         var cardP = $("<p>");
-        cardP.text("$" + response.latestPrice);
+        // cardP.text("$" + response.latestPrice);
+
+        if (response.change < 0) {
+          cardP.attr("style", "color:red;");
+          cardP.html("$" + response.latestPrice + "<img src='assets/images/red-down.svg' width='10'>");
+        }
+        else if (response.change > 0) {
+          cardP.attr("style", "color:green;");  
+          cardP.html("$" + response.latestPrice + "<img src='assets/images/green-up.svg' width='10'>");
+        }
 
         $(card).append(cardH4,cardP);
         $(".card-top-stock").append(card);
