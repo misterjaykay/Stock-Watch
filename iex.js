@@ -70,3 +70,29 @@ $(".search-btn").on("click", function(event) {
     iexURL = baseURLIEX + userInput + apiToken;
     console.log(iexURL);
   }
+
+  function renderTopStock() {
+    var topStockList = ["AAPL", "TSLA", "AMZN", "MSFT", "NFLX", "NVDA" ];
+    for (var i = 0; i < topStockList.length; i++) {
+      iexURL = baseURLIEX + topStockList[i] + apiToken;
+      $.ajax({
+        url: iexURL,
+        method: "GET"
+      }).then(function(response){
+        var card = $("<div class='column is-half card'>");
+        card.attr("data-value", topStockList[i]);
+
+        var cardH4 = $("<h6>");
+        cardH4.text(response.companyName);
+
+        var cardP = $("<p>");
+        cardP.text("$" + response.latestPrice);
+
+        $(card).append(cardH4,cardP);
+        $(".card-top-stock").append(card);
+
+      });
+    }
+  }
+renderTopStock();
+
