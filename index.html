@@ -5,113 +5,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="Description" content="Stock Watch allows you to quickly search for any stock you want, and compare it against other in an easily readable format to give you and your finances the upper hand." />
+    <meta name="Description"
+        content="Stock Watch allows you to quickly search for any stock you want, and compare it against other in an easily readable format to give you and your finances the upper hand." />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
     <link rel="stylesheet" href="assets/css/style.css">
-    <!-- google fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
 
     <title>Stock Watch</title>
 </head>
 
 <body>
+    <!-- hero at top of page; includes logo and name of site -->
     <div class="container mb-5">
-        <div class="hero is-light is-info">
+        <div class="hero is-light is-dark">
             <div class="hero-body">
                 <div class="container">
                     <img src="assets/images/project-1-logo.png" width="120"
                         class="animate__animated animate__slideInDown">
                     <h1 class="title is-1 animate__animated animate__slideInLeft animate__slow">Stock Watch</h1>
-                    <p class="subtitle animate__animated animate__slideInRight animate__slow">Welcome to Stock Watch</p>
+                    <p class="subtitle animate__animated animate__slideInRight animate__slow">Got My Mind on My Stocks and My Stocks on My Mind</p>
+                    <h4 class="current-time title is-4 animate__animated animate__fadeIn animate__slow animate__delay-2s"></h4>
                 </div>
             </div>
         </div>
     </div>
-    
+    <!-- middle containr: everything after hero and before Returned Restults -->
     <div class="container">
-        <div class="columns">           
+        <div class="columns">
             <!-- left hand column-->
-            <div class="column is-9">
-               <!-- description -->
-               <div class="columns">
+            <div class="column is-6 mt-4">
+                <!-- description -->
+                <div class="columns">
                     <div class="column">
                         <section class="section box">
-                            <h4 class="title is-4">Welcome to Stock Watch!</h4>
-                            <p>                                
-                                This page is designed to allow you to search the stocks of your choice and display pertinent information about them. Once a stock is searched for, financial information about that stock, as well as the latest article referencing that stock will appear.
+                            <h4 class="box-header title is-4">Welcome to Stock Watch!</h4>
+                            <hr>
+                            <p>
+                                This page is designed to help you keep an eye on and compare the stocks that are most important to you. Below you can search for your stock either by entering your company's name or by your stock's ticker symbol. 
                             </p>
                             <br>
                             <p>
-                                 Search using a stock's ticker symbol. If you don't know a stock's designated symbol, don't worry! You can look it up using our Stock Symbol Look-Up feature below. 
+                                Check out our Top Stocks section which displays the share price of some of today's hottest stocks.      
                             </p>
-                            <br>            
+                            <br>
                             <p>
-                                Finally, we've included a quick Currency Exchange reference on the right hand side of the page that displays the current exchange rate of the top 5 international currencies.  
-                            </p>            
+                                Finally, we have a Currency Exchance section that automatically updates the value of the U.S. dollar against some of the world's most used international currencies.
+                            </p>
                         </section>
-                    </div>
-                </div>          
-                   
-                <!-- stock symbol search title, search bar, submit button -->
-                <div class="columns">
-                
-                    <div class="column is-half">
-                        <section class="section box">
-
-                            <h4 class="title is-4">Stock Symbol Look-Up</h4>
-                            <input id="company-name" class="user-input-name" type="text" placeholder="Search Stock Symbol Here" name="search">
-                            <button id="company-name" class="search-btn" type="submit">Search</button>
-                            <button class="clear-btn-symbol" type="reset">Clear</button>
-
-                        </section>
-                    </div>
-
-                    <!-- stock symbol search results display -->                 
-                    <div class="column is-half">
-                        <section class="section box">
-                            <table class="stock-table-symbol">
-                                <tr>
-                                    <th>Company Name</th>
-                                    <th>Stock Symbol</th>
-                                </tr>
-                                <!-- returned results from search -->
-                                <tr>
-                                    <td>Apple</td>
-                                    <td>AAPL</td>
-                                </tr>
-                                <tr>
-                                    <td>Apple</td>
-                                    <td>AAPL</td>
-                                </tr>     
-                                
-                            </table>
-                        </section>
-                    </div>
-                    
-                </div>
-                         
-                <!--search bar, submit button, clear button-->
-                <div class="columns">
-                    <div class="column is-6">
-                        <section class="section box">
-                            <h4 class="title is-4">Search Stocks</h4>
-                            <input id="company-symbol" class="user-input-symbol" type="text" placeholder="Enter Stock Symbol" name="search">
-                            <button id="company-symbol" class="search-btn" type="submit">Search</button>
-                            <button class="clear-btn-all" type="reset">Clear All</button>
-                        </section> 
                     </div>
                 </div>
-
             </div>
-            <!-- right hand column to include currency exchange -->
-            <div class="column is-3">
+
+            <div class="column is-3 mt-4">
                 <section class="section box">
-                    <h4 class="current-time title is-4"></h4>
-                    <h4 class="title is-4">Currency Exchange</h4>
-                    <h5 class="title is-6">One U.S Dollar Equals</h5>
+                    <!-- top stocks header-->
+                    <h4 class="box-header title is-4">Top Stocks</h4>
+                    <hr>
+                    <!-- top stocks to be displayed with individually named cards below -->
+                    <div class="columns is-multiline card-top-stock">
+                    </div>
+                </section>
+            </div>
+
+            <!-- right hand column to include currency exchange -->
+            <div class="column is-3 mt-4">
+                <section class="section box">
+                    <h4 class="box-header title is-4">Currency Exchange</h4>
+                    <hr>
+                    <h5 class="box-header title is-6">One U.S Dollar Equals</h5>
                     <table class="currency-table">
                         <tr>
                             <th>Currency</th>
@@ -138,64 +103,77 @@
                             <td>KWD &#164;</td>
                             <td id="kwdRate"></td>
                         </tr>
+                        <tr>
+                            <td>INR &#8377;</td>
+                            <td id="inrRate"></td>
+                        </tr>
                     </table>
                 </section>
-                <section class="section box">
-                    <!-- top stocks header-->
-                    <div class="columns">
-                        <div class="column is-12">
-                            <h4 class="title is-4">Top Stocks</h4>
-                        </div>
-                    </div>
-                    <!-- top stocks to be displayed with individually named cards below -->
-                    <div class="columns is-multiline card-top-stock">
-                    </div>
+
+            </div>
+        </div>
+
+        <!-- stock symbol search title, search bar, submit button -->
+        <div class="columns is-centered">
+            <div class="column is-6 my-4">
+                <section class="section box search-box">
+                    <h4 class="box-header title is-4">Stock Symbol Look-Up</h4>
+                    <input class="user-input-symbol" type="text" placeholder="Search Stock Symbol Here" name="search">
+                    <button class="search-btn-symbol" type="submit">Search</button>
+                    <button class="clear-btn-symbol" type="reset">Clear</button>
+                </section>
+            </div>
+
+            <!--search bar, submit button, clear button-->
+            <div class="column is-6 my-4">
+                <section class="section box search-box">
+                    <h4 class="box-header title is-4">Search Stocks</h4>
+                    <input class="user-input" type="text" placeholder="Enter Stock Symbol" name="search">
+                    <button class="search-btn" type="submit">Search</button>
+                    <button class="clear-btn-all" type="reset">Clear All</button>
                 </section>
             </div>
         </div>
     </div>
-
     <!-- lower container: returned results header, returned results area -->
     <div class="container mb-5 mt-3">
-        <div class="columns is is-centered">
-            <div class="column is-12">
+        <div class="columns">
+            <div class="column is-12 mb-4">
                 <!-- section created to hold return results header and returned results area -->
                 <section class="section box">
                     <!--your search history header-->
-                    <h4 class="title is-4">Your Search History</h4>
+                    <h4 class="box-header title is-4">Your Search History</h4>
+                    <hr>
                     <table class="stock-table">
                         <tr class="table-heading">
-                            <th>Stock Name</th>
+                            <th>Company</th>
                             <th>Latest Price</th>
                             <th>Daily High</th>
                             <th>Daily Low</th>
                             <th>Opening Price</th>
                             <th>Closing Price</th>
                             <th>Latest Article</th>
-                            <th></th>
+                            <th class="button-padding"></th>
                         </tr>
-                        <!-- returned results from search -->
-                        
                     </table>
                 </section>
             </div>
         </div>
     </div>
+    <!-- footer -->
     <div class="container mb-5">
         <footer class="footer">
             <div class="content has-text-centered">
-            <p>
-                Copyright &copy; 2020 <strong>StockWatch</strong>. All Rights Reserved
-            </p>
+                <p>
+                    Copyright &copy; 2020 <strong>StockWatch</strong>. All Rights Reserved
+                </p>
             </div>
         </footer>
-    </div>
+    </div> 
 
-
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" integrity="sha256-qM7QTJSlvtPSxVRjVWNM2OfTAz/3k5ovHOKmKXuYMO4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
-        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="./javascript.js"></script>
