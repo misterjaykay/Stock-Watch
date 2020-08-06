@@ -8,19 +8,40 @@ var stockListURL = "https://financialmodelingprep.com/api/v3/company/stock/list?
 
 $(".search-btn").on("click", function(event) {
     event.preventDefault();
-    localStorage.removeItem("companySymbol");
-
+    
     $.ajax({
        url: stockListURL,
        method: "GET"
     }).then(function(response4){
-       console.log(response4.symbolsList);
-       
        for(var i = 0; i<response4.symbolsList.length; i++){
-           var name = response4.symbolsList[i].name;
-            if($(".user-input-name").val().trim().toLowerCase()==name.toLowerCase()){
-                localStorage.setItem("companySymbol", response4.symbolsList[i].symbol);
+            var name = response4.symbolsList[i].name;
+            var symbol = response4.symbolsList[i].symbol;
+            if($(".user-input-name").val().trim().toLowerCase()==name.toLowerCase() && $(".user-input-name").val()!==""){
+                var storageArr = [""];
+                if(localStorage.getItem("companySymbol")!==null){
+                    storageArr = JSON.parse(localStorage.getItem("companySymbol"));
+                    console.log(storageArr);  
+                }
+                if(storageArr[0]===""){
+                    console.log("pop")
+                    storageArr.pop();
+                }
+                console.log("symbol: " + symbol);
+                storageArr.push(symbol);
+                console.log("storageArr: "+ storageArr + ";");
+                localStorage.setItem("companySymbol", JSON.stringify(storageArr));
+                localStorage.setItem("latestSymbol", storageArr[storageArr.length-1]);
                 break;
+            } else if($(".user-input-symbol").val().trim().toLowerCase()==symbol.toLowerCase() && $(".user-input-symbol").val()!==""){
+                if(localStorage.getItem("companySymbol")===null){
+                    storageArr = [$(".user-input-symbol").val()];  
+                  }
+                    storageArr.push(symbol)
+                    localStorage.setItem("companySymbol", JSON.stringify(storageArr));
+                    localStorage.setItem("latestSymbol", storageArr[storageArr.length-1]);
+                    break;
+            } else{
+                //add modal alert that no match for search;
             }
         }
     
@@ -71,19 +92,24 @@ $(".search-btn").on("click", function(event) {
         
         displayStock();
         function displayStock(){
-            $(".stock-table").prepend('<tr class="stock-displayed stock-displayed'+index+'"><td>'+compName+'</td><td>$'+latestPrice.toFixed(2)+'</td><td>$'+high.toFixed(2)+'</td><td>$'+low.toFixed(2)+'</td><td>$'+open.toFixed(2)+'</td><td>$'+close.toFixed(2)+'</td><td><a href="'+ articleURL +'">'+headline+'</a></td><td><button class="clear-btn clear-btn'+index+'">Remove</button></td></tr>');
+            $(".stock-displayed").detach();
+            for(var i = 0; i < JSON.parse(localStorage.getItem("companySymbol")).length; i++){
+            $(".stock-table").prepend('<tr class="stock-displayed stock-displayed'+i+'"><td>'+compName+'</td><td>$'+latestPrice.toFixed(2)+'</td><td>$'+high.toFixed(2)+'</td><td>$'+low.toFixed(2)+'</td><td>$'+open.toFixed(2)+'</td><td>$'+close.toFixed(2)+'</td><td><a href="'+ articleURL +'">'+headline+'</a></td><td><button class="clear-btn clear-btn'+i+'">Remove</button></td></tr>');
             //creates a table row for the stock searched and adds all info at once
+             index++
+            }
 
             $(".table-heading").remove();
             // removes previous table heading
 
             $(".stock-table").prepend('<tr class="table-heading"><th>Company</th><th>Latest Price</th><th>Daily High</th><th>Daily Low</th><th>Opening Price</th><th>Closing Price</th><th>Latest Article:</th><th></th></tr>');
             //create the table heading dynamically
-            index++
+           
         }
 
         $(".clear-btn").on("click", function(event){
             event.preventDefault();
+            
             var loopIndex = 20;
             var removeIndex ="";
             //initializes the removeIndex
@@ -94,26 +120,49 @@ $(".search-btn").on("click", function(event) {
             $(".stock-displayed"+removeIndex).remove();
         
         })
-
-        $(".clear-btn-all").on("click", function(){
-            $(".stock-displayed").detach();
-        })
         })
     })
     })
     })
 })
 
+console.log(localStorage.getItem("companySymbol"));
+console.log(JSON.stringify(localStorage.getItem("companySymbol")));
+console.log(JSON.parse(localStorage.getItem("companySymbol")));
+
+$(".clear-btn-all").on("click", function(event){
+    event.preventDefault();
+
+    $(".stock-displayed").detach();
+    localStorage.removeItem("companySymbol");
+    localStorage.removeItem("latestSymbol");
+    console.log("button Works");
+})
+
 function buildiexURLs(){
-    
-    var symbolInput = $(".user-input-symbol").val().trim();
-    if(symbolInput==""){
-        symbolInput = localStorage.getItem("companySymbol");
+    // var symbolInput = $(".user-input-symbol").val().trim();
+    // if(symbolInput==""){
+    //     symbolInput = localStorage.getItem("companySymbol");
+    // }
+    // console.log(symbolInput);
+    iexURL = baseURLIEX + localStorage.getItem("latestSymbol") + quoteURL + apiToken;
+    newsURL = baseURLIEX + localStorage.getItem("latestSymbol") + newsURLBase + apiToken;
+    intraDayURL = baseURLIEX + localStorage.getItem("latestSymbol") + intraDayURLBase + apiToken;
+}
+
+function displayHistory() {
+    $(".stock-displayed").detach();
+    for(var i = 0; i < JSON.parse(localStorage.getItem("companySymbol")).length; i++){
+        $(".stock-table").prepend('<tr class="stock-displayed stock-displayed'+index+'"><td>'+compName+'</td><td>$'+latestPrice.toFixed(2)+'</td><td>$'+high.toFixed(2)+'</td><td>$'+low.toFixed(2)+'</td><td>$'+open.toFixed(2)+'</td><td>$'+close.toFixed(2)+'</td><td><a href="'+ articleURL +'">'+headline+'</a></td><td><button class="clear-btn clear-btn'+index+'">Remove</button></td></tr>');
+        //creates a table row for the stock searched and adds all info at once
+        index++
     }
-    console.log(symbolInput);
-    iexURL = baseURLIEX + symbolInput + quoteURL + apiToken;
-    newsURL = baseURLIEX + symbolInput + newsURLBase + apiToken;
-    intraDayURL = baseURLIEX + symbolInput + intraDayURLBase + apiToken;
+
+    $(".table-heading").remove();
+    // removes previous table heading
+
+    $(".stock-table").prepend('<tr class="table-heading"><th>Company</th><th>Latest Price</th><th>Daily High</th><th>Daily Low</th><th>Opening Price</th><th>Closing Price</th><th>Latest Article:</th><th></th></tr>');
+    //create the table heading dynamically
 }
 
 function renderTopStock() {
@@ -150,6 +199,7 @@ function renderTopStock() {
 }
 
 renderTopStock();
+// displayHistory();
 
 // working iexURL
 // https://cloud.iexapis.com/stable/stock/aapl/quote?token=pk_85904d0710804cf3865bcf30040ebec9
