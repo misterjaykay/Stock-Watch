@@ -173,7 +173,7 @@ function renderTopStock() {
         url: iexURL,
         method: "GET"
     }).then(function(response){
-        var card = $("<div class='column is-half card'>");
+        var card = $("<div class='column is-half card top-card'>");
         card.attr("data-value", topStockList[i]);
 
         var cardH4 = $("<h6>");
@@ -184,11 +184,11 @@ function renderTopStock() {
 
         if (response.change < 0) {
           cardP.attr("style", "color:red;");
-          cardP.html("$" + response.latestPrice + "<img src='assets/images/red-down.svg' width='10'>");
+          cardP.html("$" + response.latestPrice.toFixed(2) + "<img src='assets/images/red-down.svg' width='10'>");
         }
         else if (response.change > 0) {
           cardP.attr("style", "color:green;");  
-          cardP.html("$" + response.latestPrice + "<img src='assets/images/green-up.svg' width='10'>");
+          cardP.html("$" + response.latestPrice.toFixed(2) + "<img src='assets/images/green-up.svg' width='10'>");
         }
 
         $(card).append(cardH4,cardP);

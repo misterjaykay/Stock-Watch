@@ -1,3 +1,28 @@
+/* start of website background code */
+html {
+    height:100%;
+  }
+  
+body {
+    background: linear-gradient(-45deg, #057001, #10247e, #920a0a);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    font-family: 'Playfair Display', serif;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* for hero conatiner */
 .hero h1, .hero p {
     text-align: center;
 }
@@ -16,23 +41,19 @@
     border-radius: 6px;
 }
 
-.footer {
-    border-radius: 6px;
-}
-
-.stock-table th, .stock-table td {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-right: 60px;
-    padding-left: 15px;
-    border-style: solid;
+/* top stock cards */
+/* .top-card {
     border-width: 1px;
-}
+    border-color: #c9c9c9;
+    border-style: solid;
+    border-radius: 25px;
+} */
 
-.currency-table th, .currency-table td {   
-    padding-right: 30px;
-    padding-left: 40px;
-
+/* main contents boxes */
+.box-borderline {
+    border-color: #c9c9c9;
+    border-width: 4px;
+    border-style: solid;
 }
 
 .box-header {
@@ -43,29 +64,54 @@
     text-align: center;
 }
 
-body {
-    font-family: 'Playfair Display', serif;
+/* search history table */
+.stock-table th, .stock-table td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 60px;
+    padding-left: 15px;
+    border-style: solid;
+    border-width: 1px;
 }
 
-/* start of website background code */
-html {
-    height:100%;
-  }
-  
-  body {
-    background: linear-gradient(-45deg, #057001, #10247e, #920a0a);
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
+/* currency exchange table */
+.currency-table th, .currency-table td {   
+    padding-right: 15px;
+    padding-left: 20px;
+    /* font-size: 17px; */
 }
 
-@keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+#eurArrow {
+    text-align: center;
+}
+
+#inrArrow {
+    text-align: center;
+}
+
+#jpyArrow {
+    text-align: center;
+}
+
+#gbpArrow {
+    text-align: center;
+}
+
+#cadArrow {
+    text-align: center;
+}
+
+#kwdArrow {
+    text-align: center;
+}
+
+/* footer */
+footer {
+    border-radius: 6px;
+    background-color: #363636;
+    color: #fff;
+}
+
+strong {
+    color: #fff;
 }

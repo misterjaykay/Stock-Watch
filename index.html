@@ -21,10 +21,10 @@
 <body>
     <!-- hero at top of page; includes logo and name of site -->
     <div class="container mb-5">
-        <div class="hero is-light is-dark">
+        <div class="hero is-dark">
             <div class="hero-body">
                 <div class="container">
-                    <img src="assets/images/project-1-logo.png" width="120"
+                    <img src="assets/images/project-1-logo.png" alt="logo" width="95" height="95"
                         class="animate__animated animate__slideInDown">
                     <h1 class="title is-1 animate__animated animate__slideInLeft animate__slow">Stock Watch</h1>
                     <p class="subtitle animate__animated animate__slideInRight animate__slow">Got My Mind on My Stocks and My Stocks on My Mind</p>
@@ -41,7 +41,7 @@
                 <!-- description -->
                 <div class="columns">
                     <div class="column">
-                        <section class="section box">
+                        <section class="section box box-borderline">
                             <h4 class="box-header title is-4">Welcome to Stock Watch!</h4>
                             <hr>
                             <p>
@@ -61,7 +61,7 @@
             </div>
 
             <div class="column is-3 mt-4">
-                <section class="section box">
+                <section class="section box box-borderline">
                     <!-- top stocks header-->
                     <h4 class="box-header title is-4">Top Stocks</h4>
                     <hr>
@@ -73,7 +73,7 @@
 
             <!-- right hand column to include currency exchange -->
             <div class="column is-3 mt-4">
-                <section class="section box">
+                <section class="section box box-borderline">
                     <h4 class="box-header title is-4">Currency Exchange</h4>
                     <hr>
                     <h5 class="box-header title is-6">One U.S Dollar Equals</h5>
@@ -81,31 +81,37 @@
                         <tr>
                             <th>Currency</th>
                             <th>Value</th>
+                            <th>+/-</th>
                         </tr>
                         <tr>
-                            <td>EUR &#8364;</td>
+                            <td>EUR</td>
                             <td id="euroRate"></td>
-                            <td></td>
+                            <td id="eurArrow"></td>
                         </tr>
                         <tr>
-                            <td>JPY &#165;</td>
+                            <td>JPY</td>
                             <td id="jpyRate"></td>
+                            <td id="jpyArrow"></td>
                         </tr>
                         <tr>
-                            <td>GBP &#163;</td>
+                            <td>GBP</td>
                             <td id="gbpRate"></td>
+                            <td id="gbpArrow"></td>
                         </tr>
                         <tr>
-                            <td>CAD &#36;</td>
+                            <td>CAD</td>
                             <td id="cadRate"></td>
+                            <td id="cadArrow"></td>
                         </tr>
                         <tr>
-                            <td>KWD &#164;</td>
+                            <td>KWD</td>
                             <td id="kwdRate"></td>
+                            <td id="kwdArrow"></td>
                         </tr>
                         <tr>
-                            <td>INR &#8377;</td>
+                            <td>INR</td>
                             <td id="inrRate"></td>
+                            <td id="inrArrow"></td>
                         </tr>
                     </table>
                 </section>
@@ -114,25 +120,35 @@
         </div>
 
         <!-- stock symbol search title, search bar, submit button -->
-        <div class="columns is-centered">
-            <div class="column is-6 my-4">
-                <section class="section box search-box">
-                    <h4 class="box-header title is-4">Search Stock By Symbol </h4>
-                    <input class="user-input-symbol" type="text" placeholder="Enter Stock Symbol Here" name="search">
+        <div class="columns is-vcentered">
+            <div class="column is-4 my-4">
+                <section class="section box search-box box-borderline">
+                    <h4 class="box-header title is-4">Stock Symbol Look-Up</h4>
+                    <input class="user-input-symbol" type="text" placeholder="Search Stock Symbol Here" name="search">
                     <button class="search-btn-symbol" type="submit">Search</button>
                     <button class="clear-btn-all" type="reset">Clear ALL</button>
                 </section>
             </div>
 
             <!--search bar, submit button, clear button-->
-            <div class="column is-6 my-4">
-                <section class="section box search-box">
-                    <h4 class="box-header title is-4">Search Stock By Name</h4>
-                    <input class="user-input-name" type="text" placeholder="Enter Stock Name Here" name="search">
+            <div class="column is-4 my-4">
+                <section class="section box search-box box-borderline">
+                    <h4 class="box-header title is-4">Search Stocks</h4>
+                    <input class="user-input-name" type="text" placeholder="Enter Stock Symbol" name="search">
                     <button class="search-btn" type="submit">Search</button>
                     <button class="clear-btn-all" type="reset">Clear All</button>
                 </section>
             </div>
+
+            <!-- ads placement here -->
+            <div class="column is-4 my-4">
+                <section class="box search-box box-borderline ads">
+                    <a href="https://bootcamp.rutgers.edu/coding/" target="_blank">
+                        <img src="assets/images/banner-img.gif"  alt="ads">
+                    </a>
+                </section>
+            </div>
+
         </div>
     </div>
     <!-- lower container: returned results header, returned results area -->
@@ -140,7 +156,7 @@
         <div class="columns">
             <div class="column is-12 mb-4">
                 <!-- section created to hold return results header and returned results area -->
-                <section class="section box">
+                <section class="section box box-borderline">
                     <!--your search history header-->
                     <h4 class="box-header title is-4">Your Search History</h4>
                     <hr>
@@ -162,7 +178,7 @@
     </div>
     <!-- footer -->
     <div class="container mb-5">
-        <footer class="footer">
+        <footer class="py-4">
             <div class="content has-text-centered">
                 <p>
                     Copyright &copy; 2020 <strong>StockWatch</strong>. All Rights Reserved
@@ -177,9 +193,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="./javascript.js"></script>
-    <script src="moment.js"></script>
     <script src="./iex.js"></script>
-    <script src="./currency.js"></script>
+
 
 </body>
 
