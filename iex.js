@@ -4,11 +4,26 @@ var index = 0;
 var quoteURL = "/quote";
 var newsURLBase = "/news/last/1";
 var intraDayURLBase = "/intraday-prices";
-var tableRows = [".stock-displayed0"];
+var stockListURL = "https://financialmodelingprep.com/api/v3/company/stock/list?apikey=50cb9e8f707557d71a23370f6431ed64";
 
 $(".search-btn").on("click", function(event) {
     event.preventDefault();
-  
+    localStorage.removeItem("companySymbol");
+
+    $.ajax({
+       url: stockListURL,
+       method: "GET"
+    }).then(function(response4){
+       console.log(response4.symbolsList);
+       
+       for(var i = 0; i<response4.symbolsList.length; i++){
+           var name = response4.symbolsList[i].name;
+            if($(".user-input-name").val().trim().toLowerCase()==name.toLowerCase()){
+                localStorage.setItem("companySymbol", response4.symbolsList[i].symbol);
+                break;
+            }
+        }
+    
     // Builds both URLs
     buildiexURLs();
     
@@ -53,8 +68,8 @@ $(".search-btn").on("click", function(event) {
             // var source = response1[0].source;
             // source for article if needed 
             var articleURL = response1[0].url;
+        
         displayStock();
-            
         function displayStock(){
             $(".stock-table").prepend('<tr class="stock-displayed stock-displayed'+index+'"><td>'+compName+'</td><td>$'+latestPrice.toFixed(2)+'</td><td>$'+high.toFixed(2)+'</td><td>$'+low.toFixed(2)+'</td><td>$'+open.toFixed(2)+'</td><td>$'+close.toFixed(2)+'</td><td><a href="'+ articleURL +'">'+headline+'</a></td><td><button class="clear-btn clear-btn'+index+'">Remove</button></td></tr>');
             //creates a table row for the stock searched and adds all info at once
@@ -64,9 +79,6 @@ $(".search-btn").on("click", function(event) {
 
             $(".stock-table").prepend('<tr class="table-heading"><th>Company</th><th>Latest Price</th><th>Daily High</th><th>Daily Low</th><th>Opening Price</th><th>Closing Price</th><th>Latest Article:</th><th></th></tr>');
             //create the table heading dynamically
-            if(index>0){
-                tableRows += ".stock-displayed"+index;
-            }
             index++
         }
 
@@ -86,17 +98,22 @@ $(".search-btn").on("click", function(event) {
         $(".clear-btn-all").on("click", function(){
             $(".stock-displayed").detach();
         })
+        })
     })
     })
-    
-  })
+    })
 })
 
 function buildiexURLs(){
-    var userInput = $(".user-input").val().trim();
-    iexURL = baseURLIEX + userInput + quoteURL + apiToken;
-    newsURL = baseURLIEX + userInput + newsURLBase + apiToken;
-    intraDayURL = baseURLIEX + userInput + intraDayURLBase + apiToken;
+    
+    var symbolInput = $(".user-input-symbol").val().trim();
+    if(symbolInput==""){
+        symbolInput = localStorage.getItem("companySymbol");
+    }
+    console.log(symbolInput);
+    iexURL = baseURLIEX + symbolInput + quoteURL + apiToken;
+    newsURL = baseURLIEX + symbolInput + newsURLBase + apiToken;
+    intraDayURL = baseURLIEX + symbolInput + intraDayURLBase + apiToken;
 }
 
 function renderTopStock() {
@@ -106,7 +123,7 @@ function renderTopStock() {
       $.ajax({
         url: iexURL,
         method: "GET"
-      }).then(function(response){
+    }).then(function(response){
         var card = $("<div class='column is-half card'>");
         card.attr("data-value", topStockList[i]);
 
@@ -142,3 +159,6 @@ renderTopStock();
 
 //working intraDayURL:
 // https://cloud.iexapis.com/stable/stock/aapl/intraday-prices?token=pk_85904d0710804cf3865bcf30040ebec9
+
+// working financialmodelingprep URL:
+// https://financialmodelingprep.com/api/v3/company/stock/list?apikey=50cb9e8f707557d71a23370f6431ed64
