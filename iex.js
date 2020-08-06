@@ -56,7 +56,7 @@ $(".search-btn").on("click", function(event) {
         displayStock();
             
         function displayStock(){
-            $(".stock-table").prepend('<tr class="stock-displayed'+index+'"><td>'+compName+'</td><td>$'+latestPrice.toFixed(2)+'</td><td>$'+high.toFixed(2)+'</td><td>$'+low.toFixed(2)+'</td><td>$'+open.toFixed(2)+'</td><td>$'+close.toFixed(2)+'</td><td><a href="'+ articleURL +'">'+headline+'</a></td><td><button class="clear-btn clear-btn'+index+'">Remove</button></td></tr>');
+            $(".stock-table").prepend('<tr class="stock-displayed stock-displayed'+index+'"><td>'+compName+'</td><td>$'+latestPrice.toFixed(2)+'</td><td>$'+high.toFixed(2)+'</td><td>$'+low.toFixed(2)+'</td><td>$'+open.toFixed(2)+'</td><td>$'+close.toFixed(2)+'</td><td><a href="'+ articleURL +'">'+headline+'</a></td><td><button class="clear-btn clear-btn'+index+'">Remove</button></td></tr>');
             //creates a table row for the stock searched and adds all info at once
 
             $(".table-heading").remove();
@@ -84,7 +84,7 @@ $(".search-btn").on("click", function(event) {
         })
 
         $(".clear-btn-all").on("click", function(){
-            document.location.reload();
+            $(".stock-displayed").detach();
         })
     })
     })
