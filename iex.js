@@ -62,7 +62,7 @@ $(".search-btn").on("click", function(event) {
             $(".table-heading").remove();
             // removes previous table heading
 
-            $(".stock-table").prepend('<tr class="table-heading"><th>Stock Name</th><th>Latest Price</th><th>Daily High</th><th>Daily Low</th><th>Opening Price</th><th>Closing Price</th><th>Latest Article:</th><th></th></tr>');
+            $(".stock-table").prepend('<tr class="table-heading"><th>Company</th><th>Latest Price</th><th>Daily High</th><th>Daily Low</th><th>Opening Price</th><th>Closing Price</th><th>Latest Article:</th><th></th></tr>');
             //create the table heading dynamically
             if(index>0){
                 tableRows += ".stock-displayed"+index;

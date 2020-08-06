@@ -37,12 +37,13 @@
     <div class="container">
         <div class="columns">
             <!-- left hand column-->
-            <div class="column is-6">
+            <div class="column is-6 mt-4">
                 <!-- description -->
                 <div class="columns">
                     <div class="column">
                         <section class="section box">
-                            <h4 class="title is-4">Welcome to Stock Watch!</h4>
+                            <h4 class="box-header title is-4">Welcome to Stock Watch!</h4>
+                            <hr>
                             <p>
                                 This page is designed to allow you to search the stocks of your choice and display
                                 pertinent information about them. Once a stock is searched for, financial information
@@ -63,14 +64,11 @@
                 </div>
             </div>
 
-            <div class="column is-3">
+            <div class="column is-3 mt-4">
                 <section class="section box">
                     <!-- top stocks header-->
-                    <div class="columns">
-                        <div class="column is-12">
-                            <h4 class="title is-4">Top Stocks</h4>
-                        </div>
-                    </div>
+                    <h4 class="box-header title is-4">Top Stocks</h4>
+                    <hr>
                     <!-- top stocks to be displayed with individually named cards below -->
                     <div class="columns is-multiline card-top-stock">
                     </div>
@@ -78,10 +76,11 @@
             </div>
 
             <!-- right hand column to include currency exchange -->
-            <div class="column is-3">
+            <div class="column is-3 mt-4">
                 <section class="section box">
-                    <h4 class="title is-4">Currency Exchange</h4>
-                    <h5 class="title is-6">One U.S Dollar Equals</h5>
+                    <h4 class="box-header title is-4">Currency Exchange</h4>
+                    <hr>
+                    <h5 class="box-header title is-6">One U.S Dollar Equals</h5>
                     <table class="currency-table">
                         <tr>
                             <th>Currency</th>
@@ -115,10 +114,10 @@
         </div>
 
         <!-- stock symbol search title, search bar, submit button -->
-        <div class="columns">
-            <div class="column is-6">
-                <section class="section box">
-                    <h4 class="title is-4">Stock Symbol Look-Up</h4>
+        <div class="columns is-centered">
+            <div class="column is-6 my-4">
+                <section class="section box search-box">
+                    <h4 class="box-header title is-4">Stock Symbol Look-Up</h4>
                     <input class="user-input-symbol" type="text" placeholder="Search Stock Symbol Here" name="search">
                     <button class="search-btn-symbol" type="submit">Search</button>
                     <button class="clear-btn-symbol" type="reset">Clear</button>
@@ -126,9 +125,9 @@
             </div>
 
             <!--search bar, submit button, clear button-->
-            <div class="column is-6">
-                <section class="section box">
-                    <h4 class="title is-4">Search Stocks</h4>
+            <div class="column is-6 my-4">
+                <section class="section box search-box">
+                    <h4 class="box-header title is-4">Search Stocks</h4>
                     <input class="user-input" type="text" placeholder="Enter Stock Symbol" name="search">
                     <button class="search-btn" type="submit">Search</button>
                     <button class="clear-btn-all" type="reset">Clear All</button>
@@ -138,22 +137,23 @@
     </div>
     <!-- lower container: returned results header, returned results area -->
     <div class="container mb-5 mt-3">
-        <div class="columns is is-centered">
-            <div class="column is-12">
+        <div class="columns">
+            <div class="column is-12 mb-4">
                 <!-- section created to hold return results header and returned results area -->
                 <section class="section box">
                     <!--your search history header-->
-                    <h4 class="title is-4">Your Search History</h4>
+                    <h4 class="box-header title is-4">Your Search History</h4>
+                    <hr>
                     <table class="stock-table">
                         <tr class="table-heading">
-                            <th>Stock Name</th>
+                            <th>Company</th>
                             <th>Latest Price</th>
                             <th>Daily High</th>
                             <th>Daily Low</th>
                             <th>Opening Price</th>
                             <th>Closing Price</th>
                             <th>Latest Article</th>
-                            <th></th>
+                            <th class="button-padding"></th>
                         </tr>
                     </table>
                 </section>
