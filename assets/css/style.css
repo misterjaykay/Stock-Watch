@@ -16,8 +16,14 @@
     border-radius: 6px;
 }
 
-.footer {
+footer {
     border-radius: 6px;
+    background-color: #363636;
+    color: #fff;
+}
+
+strong {
+    color: #fff;
 }
 
 .stock-table th, .stock-table td {
