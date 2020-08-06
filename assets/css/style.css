@@ -1,3 +1,9 @@
+.box-borderline {
+    border-color: #c9c9c9;
+    border-width: 4px;
+    border-style: solid;
+}
+
 .hero h1, .hero p {
     text-align: center;
 }
