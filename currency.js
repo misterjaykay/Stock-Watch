@@ -42,4 +42,16 @@ $.ajax({
     kwdRate = kwdRate.toFixed(2);
     // passes the value stored inside the variable into an id
     $("#kwdRate").text(kwdRate);
+
+    // get the exchange rate for indian rupee
+    var inrRate = response.rates.INR;
+    inrRate = inrRate.toFixed(2);
+    // passes the value stored inside the variable into an id
+    $("#inrRate").text(inrRate);
+
+    var inrRate = response.rates.INR;
+    inrRate = inrRate.toFixed(2);
+    // passes the value stored inside the variable into an id
+    $("#inrRate").text(inrRate);
+
 });
