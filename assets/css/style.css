@@ -36,9 +36,32 @@ strong {
 }
 
 .currency-table th, .currency-table td {   
-    padding-right: 30px;
-    padding-left: 40px;
+    padding-right: 15px;
+    padding-left: 20px;
+}
 
+#eurArrow {
+    text-align: center;
+}
+
+#inrArrow {
+    text-align: center;
+}
+
+#jpyArrow {
+    text-align: center;
+}
+
+#gbpArrow {
+    text-align: center;
+}
+
+#cadArrow {
+    text-align: center;
+}
+
+#kwdArrow {
+    text-align: center;
 }
 
 .box-header {
