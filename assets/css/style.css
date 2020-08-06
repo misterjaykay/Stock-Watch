@@ -1,9 +1,28 @@
-.box-borderline {
-    border-color: #c9c9c9;
-    border-width: 4px;
-    border-style: solid;
+/* start of website background code */
+html {
+    height:100%;
+  }
+  
+body {
+    background: linear-gradient(-45deg, #057001, #10247e, #920a0a);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    font-family: 'Playfair Display', serif;
 }
 
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* for hero conatiner */
 .hero h1, .hero p {
     text-align: center;
 }
@@ -22,16 +41,30 @@
     border-radius: 6px;
 }
 
-footer {
-    border-radius: 6px;
-    background-color: #363636;
-    color: #fff;
+/* top stock cards */
+/* .top-card {
+    border-width: 1px;
+    border-color: #c9c9c9;
+    border-style: solid;
+    border-radius: 25px;
+} */
+
+/* main contents boxes */
+.box-borderline {
+    border-color: #c9c9c9;
+    border-width: 4px;
+    border-style: solid;
 }
 
-strong {
-    color: #fff;
+.box-header {
+    text-align: center;
 }
 
+.search-box {
+    text-align: center;
+}
+
+/* search history table */
 .stock-table th, .stock-table td {
     padding-top: 10px;
     padding-bottom: 10px;
@@ -41,9 +74,11 @@ strong {
     border-width: 1px;
 }
 
+/* currency exchange table */
 .currency-table th, .currency-table td {   
     padding-right: 15px;
     padding-left: 20px;
+    /* font-size: 17px; */
 }
 
 #eurArrow {
@@ -70,37 +105,13 @@ strong {
     text-align: center;
 }
 
-.box-header {
-    text-align: center;
+/* footer */
+footer {
+    border-radius: 6px;
+    background-color: #363636;
+    color: #fff;
 }
 
-.search-box {
-    text-align: center;
-}
-
-body {
-    font-family: 'Playfair Display', serif;
-}
-
-/* start of website background code */
-html {
-    height:100%;
-  }
-  
-  body {
-    background: linear-gradient(-45deg, #057001, #10247e, #920a0a);
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
-}
-
-@keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+strong {
+    color: #fff;
 }
