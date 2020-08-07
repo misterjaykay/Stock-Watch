@@ -2,10 +2,16 @@
 
 
 # User Story
-We want to create a Web Application where user can check real time stock prices, check stock's history and look at predictions as well.\
-We also want them to be able buy, sell and trade stocks.\
-We will make use of 3-4 apis that will let us have the access to real time stock prices, provide us with a currency exchanger and be able to link a bank for the user so they can add funds to their portfolio account. 
 
+We wanted to create a Web Application where beginning investors can search and compare stock prices in a clear and concise environment. We wanted to enhance the user experience by adding sections for top stocks and a currency exchange table.
+
+We made use of 3 APIs to allow the user to search for real time stock prices and provide us with the currency exchange values. 
+
+As a BEGINNER INVESTOR\
+I WANT to be able to search for general information on stocks\
+SO THAT I can keep track of the stocks I choose\
+WHEN I search a stock\
+THEN it is displayed so I can plainly view it and compare it with others
 
 # Technologies We Used
 * HTML5
