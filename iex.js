@@ -9,18 +9,16 @@ localStorage.setItem("baseObject", JSON.stringify(baseObject))
 
 $(".search-btn-name").on("click", function(event){
     event.preventDefault();
-    $(".user-input-symbol").attr("value", "");
+    localStorage.setItem("latestClick", "name");
 }) //empties the symbol input so it wont conflict with name search
 
 $(".search-btn-symbol").on("click", function(event){
     event.preventDefault();
-    $(".user-input-name").attr("value", "");
+    localStorage.setItem("latestClick", "symbol");
 }) // empties the name input so it wont conflict with symbol search
 
 $(".search-btn").on("click", function(event) {
     event.preventDefault();
-    
-    
 
     $.ajax({
        url: stockListURL,
@@ -31,7 +29,7 @@ $(".search-btn").on("click", function(event) {
             var name = response4.symbolsList[i].name;
             var symbol = response4.symbolsList[i].symbol;
             // assigns variables for current stock name and symbol it is comparing to user input
-            
+            if(localStorage.getItem("latestClick")==="name"){
             if($(".user-input-name").val().trim().toLowerCase()==name.toLowerCase() && $(".user-input-name").val() != ""){
                 // finds a match for the name of the stock also checks if input is empty
                 
@@ -74,7 +72,7 @@ $(".search-btn").on("click", function(event) {
                 //creates a local variable to hold the only matched symbol and saves it as the latest symbol
 
                 break;
-            } else if($(".user-input-symbol").val().trim().toLowerCase()==symbol.toLowerCase() && $(".user-input-symbol").val() != ""){
+            }} else if($(".user-input-symbol").val().trim().toLowerCase()==symbol.toLowerCase() && $(".user-input-symbol").val() != ""){
                 localStorage.setItem("matchedName", name);
                 localStorage.setItem("matchedSymbol", symbol);
                 // saves matched info to local storage to pull later out of scope of variables
