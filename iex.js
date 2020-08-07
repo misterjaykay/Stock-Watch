@@ -39,7 +39,7 @@ $(".search-btn").on("click", function(event) {
                 var storageArr = [];
                 //initializes a storage arr to hold each stockObject
                 
-                if(JSON.parse(localStorage.getItem("stockObjects")) != null || JSON.parse(localStorage.getItem("stockObjects")) != ""){
+                if(JSON.parse(localStorage.getItem("stockObjects")) != null){
                     //checks if local storage has info already
 
                     for(var i = 0; i < JSON.parse(localStorage.getItem("stockObjects")).length; i++){
@@ -54,20 +54,22 @@ $(".search-btn").on("click", function(event) {
                     storageArr[storageArr.length-1].symbol = localStorage.getItem(matchedSymbol);
                     // adds stock name and symbol to that stockObject template
 
-                    localStorage.setItem("stockObjects", storageArr);
+                    localStorage.setItem("stockObjects", JSON.stringify(storageArr));
                     // update the saved stockObjects
                 
                 } else {
                     storageArr.push(JSON.parse(localStorage.getItem("baseObject")));
                     // adds an stockObject template to the empty array
                     
-                    storageArr[storageArr.length-1].name = localStorage.getItem(matchedName);
-                    storageArr[storageArr.length-1].symbol = localStorage.getItem(matchedSymbol);
+                    storageArr[storageArr.length-1].name = localStorage.getItem("matchedName");
+                    storageArr[storageArr.length-1].symbol = localStorage.getItem("matchedSymbol");
                     // adds stock name and symbol to the stockObject template 
                 }
+                
+                var localVar = localStorage.getItem("matchedSymbol");
+                localStorage.setItem("latestSymbol", localVar);
+                //creates a local variable to hold the only matched symbol and saves it as the latest symbol
 
-                localStorage.setItem("latestSymbol", JSON.parse(localStorage.getItem("stockObjects"))[(JSON.parse(localStorage.getItem("stockObjects")).length-1)].symbol);
-                //saves the latest symbol
                 break;
             } else if($(".user-input-symbol").val().trim().toLowerCase()==symbol.toLowerCase() && $(".user-input-symbol").val() != ""){
                 localStorage.setItem("matchedName", name);
@@ -92,7 +94,7 @@ $(".search-btn").on("click", function(event) {
                     storageArr[storageArr.length-1].symbol = localStorage.getItem(matchedSymbol);
                     // adds stock name and symbol to that stockObject template
 
-                    localStorage.setItem("stockObjects", storageArr);
+                    localStorage.setItem("stockObjects", JSON.stringify(storageArr));
                     // update the saved stockObjects
                 
                 } else {
@@ -132,13 +134,17 @@ $(".search-btn").on("click", function(event) {
         baseObject.close = response.close;
         // uses the stockObject template to hold all values before they get saved
 
-        var localArr = JSON.parse(localStorage.getItem("stockObjects"))
-        // initialize a local array to hold the array of stock objects
+        if(localStorage.getItem("stockObjects") == null){
+            var localArr = [baseObject];
+        } else {
+            var localArr = JSON.parse(localStorage.getItem("stockObjects"))
+            // initialize a local array to hold the array of stock objects
 
-        localArr[localArr.length-1] = baseObject;
-        //replaces the last stock object in the array with one that has all the info gathered so far
+            localArr[localArr.length-1] = baseObject;
+            //replaces the last stock object in the array with one that has all the info gathered so far
+        }
 
-        localStorage.setItem("stockObjects", localArr);
+        localStorage.setItem("stockObjects", JSON.stringify(localArr));
         // Updates the saved array of stock objects
 
         baseObject = {"name": "", "symbol":"", "latestPrice":"", "high":"", "low":"", "open":"", "close":"", "articleURL": "", "articleHeadline": ""};
@@ -218,7 +224,8 @@ $(".clear-btn-all").on("click", function(event){
     $(".stock-displayed").detach();
     localStorage.removeItem("stockObjects");
     localStorage.removeItem("latestSymbol");
-    console.log("button Works");
+    localStorage.removeItem("matchedName")
+    localStorage.removeItem("matchedSymbol")
 })
 
 function buildiexURLs(){
