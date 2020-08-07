@@ -65,6 +65,8 @@ $(".search-btn").on("click", function(event) {
                     storageArr[storageArr.length-1].name = localStorage.getItem("matchedName");
                     storageArr[storageArr.length-1].symbol = localStorage.getItem("matchedSymbol");
                     // adds stock name and symbol to the stockObject template 
+
+                    localStorage.setItem("stockObjects", JSON.stringify(storageArr));
                 }
                 
                 var localVar = localStorage.getItem("matchedSymbol");
@@ -104,7 +106,9 @@ $(".search-btn").on("click", function(event) {
                     
                     storageArr[storageArr.length-1].name = localStorage.getItem("matchedName");
                     storageArr[storageArr.length-1].symbol = localStorage.getItem("matchedSymbol");
-                    // adds stock name and symbol to the stockObject template 
+                    // adds stock name and symbol to the stockObject template
+
+                    localStorage.setItem("stockObjects", JSON.stringify(storageArr));
                 }
 
                 var localVar = localStorage.getItem("matchedSymbol");
@@ -130,9 +134,10 @@ $(".search-btn").on("click", function(event) {
         //response holds the info for the latest symbol
 
         baseObject.symbol = localStorage.getItem("latestSymbol");
-        baseObject.name = response.companyName;
+        baseObject.name = JSON.parse(localStorage.getItem("stockObjects"))[JSON.parse(localStorage.getItem("stockObjects")).length-1].name;
         baseObject.latestPrice = response.latestPrice;
         baseObject.high = response.high;
+        console.log(baseObject.high);
         baseObject.low = response.low;
         baseObject.open = response.open;
         baseObject.close = response.close;
@@ -152,30 +157,44 @@ $(".search-btn").on("click", function(event) {
 
         localStorage.setItem("stockObjects", JSON.stringify(localArr));
         // Updates the saved array of stock objects
-
-        baseObject = {"name": "", "symbol":"", "latestPrice":"", "high":"", "low":"", "open":"", "close":"", "articleURL": "", "articleHeadline": ""};
-        //returns baseObject to its former glory
         
     // intraDay stock info
     $.ajax({
         url: intraDayURL,
         method: "GET"
     }).then(function(response2){
+        console.log("gets intraDay")
         var responseIndex= response2.length-1;
+        console.log(response2[response2.length-1].high)
         while(response2[response2.length-1].high==null){
+            console.log("goes into while loop")
             if(responseIndex===0){
                 break;
             }
             responseIndex--;
+            console.log(response2[responseIndex].high);
         } 
         //while loop searches intraDayUrl to find latest non null info and establishes an index to that array object with proper info
+        console.log(baseObject.high);
+        if(baseObject.high == null){
 
-        if(JSON.parse(localStorage.getItem("stockObjects"))[JSON.parse(localStorage.getItem("stockObjects")).length-1].high===null){
-            JSON.parse(localStorage.getItem("stockObjects"))[JSON.parse(localStorage.getItem("stockObjects")).length-1].high = response2[responseIndex].high;
-            JSON.parse(localStorage.getItem("stockObjects"))[JSON.parse(localStorage.getItem("stockObjects")).length-1].low = response2[responseIndex].low;
-            JSON.parse(localStorage.getItem("stockObjects"))[JSON.parse(localStorage.getItem("stockObjects")).length-1].open = response2[responseIndex].open;
-            JSON.parse(localStorage.getItem("stockObjects"))[JSON.parse(localStorage.getItem("stockObjects")).length-1].close = response2[responseIndex].close;
+            baseObject.high = response2[responseIndex].high
+            baseObject.low = response2[responseIndex].low
+            baseObject.open = response2[responseIndex].open
+            baseObject.close = response2[responseIndex].close
+
+            if(localStorage.getItem("stockObjects") == null){
+                localStorage.setItem("stockobjects", JSON.stringify(baseObject))
+            } else {
+                var localArr = JSON.parse(localStorage.getItem("stockObjects"));
+                localArr[JSON.parse(localStorage.getItem("stockObjects")).length-1] = (baseObject)
+                localStorage.setItem("stockObjects", JSON.stringify(localArr));
+            }
         }
+
+        baseObject = {"name": "", "symbol":"", "latestPrice":"", "high":"", "low":"", "open":"", "close":"", "articleURL": "", "articleHeadline": ""};
+        //returns baseObject to its former glory
+
         // if statment check if data pulled from IEX quote URL is null, if it is then it uses new data from IEX intraDay URL to replace the null data
     
         //AJAX call to receive the latest article corresponding with the current stock being worked with
