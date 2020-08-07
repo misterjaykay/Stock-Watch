@@ -3,7 +3,7 @@ var apiToken = "?token=pk_85904d0710804cf3865bcf30040ebec9"
 var quoteURL = "/quote";
 var newsURLBase = "/news/last/1";
 var intraDayURLBase = "/intraday-prices";
-var stockListURL = "https://financialmodelingprep.com/api/v3/company/stock/list?apikey=50cb9e8f707557d71a23370f6431ed64";
+var stockListURL = "https://financialmodelingprep.com/api/v3/company/stock/list?apikey=513abe965cedbb3357ade6b1f1b12dc2";
 var baseObject = {"name": "", "symbol":"", "latestPrice":"", "high":"", "low":"", "open":"", "close":"", "articleURL": "", "articleHeadline": ""};
 localStorage.setItem("baseObject", JSON.stringify(baseObject))
 
@@ -20,10 +20,13 @@ $(".search-btn-symbol").on("click", function(event){
 $(".search-btn").on("click", function(event) {
     event.preventDefault();
     
+    
+
     $.ajax({
        url: stockListURL,
        method: "GET"
     }).then(function(response4){
+        console.log(response4.symbolsList);
        for(var i = 0; i<response4.symbolsList.length; i++){
             var name = response4.symbolsList[i].name;
             var symbol = response4.symbolsList[i].symbol;
@@ -50,8 +53,8 @@ $(".search-btn").on("click", function(event) {
                     storageArr.push(JSON.parse(localStorage.getItem("baseObject")));
                     // adds an object template to the end of the array of stockObjects
 
-                    storageArr[storageArr.length-1].name = localStorage.getItem(matchedName);
-                    storageArr[storageArr.length-1].symbol = localStorage.getItem(matchedSymbol);
+                    storageArr[storageArr.length-1].name = localStorage.getItem("matchedName");
+                    storageArr[storageArr.length-1].symbol = localStorage.getItem("matchedSymbol");
                     // adds stock name and symbol to that stockObject template
 
                     localStorage.setItem("stockObjects", JSON.stringify(storageArr));
@@ -79,7 +82,7 @@ $(".search-btn").on("click", function(event) {
                 var storageArr = [];
                 //initializes a storage arr to hold each stockObject
                 
-                if(localStorage.getItem("stockObjects") != null || localStorage.getItem("stockObjects") != ""){
+                if(localStorage.getItem("stockObjects") != null){
                     //checks if local storage has info already
 
                     for(var i = 0; i < JSON.parse(localStorage.getItem("stockObjects")).length; i++){
@@ -90,8 +93,8 @@ $(".search-btn").on("click", function(event) {
                     storageArr.push(JSON.parse(localStorage.getItem("baseObject")));
                     // adds an object template to the end of the array of stockObjects
 
-                    storageArr[storageArr.length-1].name = localStorage.getItem(matchedName);
-                    storageArr[storageArr.length-1].symbol = localStorage.getItem(matchedSymbol);
+                    storageArr[storageArr.length-1].name = localStorage.getItem("matchedName");
+                    storageArr[storageArr.length-1].symbol = localStorage.getItem("matchedSymbol");
                     // adds stock name and symbol to that stockObject template
 
                     localStorage.setItem("stockObjects", JSON.stringify(storageArr));
@@ -101,12 +104,13 @@ $(".search-btn").on("click", function(event) {
                     storageArr.push(JSON.parse(localStorage.getItem("baseObject")));
                     // adds an stockObject template to the empty array
                     
-                    storageArr[storageArr.length-1].name = localStorage.getItem(matchedName);
-                    storageArr[storageArr.length-1].symbol = localStorage.getItem(matchedSymbol);
+                    storageArr[storageArr.length-1].name = localStorage.getItem("matchedName");
+                    storageArr[storageArr.length-1].symbol = localStorage.getItem("matchedSymbol");
                     // adds stock name and symbol to the stockObject template 
                 }
 
-                localStorage.setItem("latestSymbol", JSON.parse(localStorage.getItem("stockObjects"))[(JSON.parse(localStorage.getItem("stockObjects")).length-1)].symbol);
+                var localVar = localStorage.getItem("matchedSymbol");
+                localStorage.setItem("latestSymbol", localVar);
                 //saves the latest symbol
                 break;
             } else{
@@ -115,15 +119,14 @@ $(".search-btn").on("click", function(event) {
         }
     
     
-    buildiexURLs(); // Builds all URLs using the saved latestSymbol
+        buildiexURLs(); // Builds all URLs using the saved latestSymbol
    
 
     //stock ajax for after market closes
     $.ajax({
       url: iexURL,
       method: "GET"
-    })
-    .then(function(response){
+    }).then(function(response){
         //response holds the info for the latest symbol
 
         baseObject.name =response.companyName;
@@ -177,7 +180,10 @@ $(".search-btn").on("click", function(event) {
             url: newsURL,
             method: "GET"
         }).then(function(response1){
+            console.log(response1[0].headline);
+            console.log("Headline:" +JSON.parse(localStorage.getItem("stockObjects"))[JSON.parse(localStorage.getItem("stockObjects")).length-1].articleHeadline+";")
             JSON.parse(localStorage.getItem("stockObjects"))[JSON.parse(localStorage.getItem("stockObjects")).length-1].articleHeadline= response1[0].headline;
+            console.log("Headline2:" +JSON.parse(localStorage.getItem("stockObjects"))[JSON.parse(localStorage.getItem("stockObjects")).length-1].articleHeadline+";")
             JSON.parse(localStorage.getItem("stockObjects"))[JSON.parse(localStorage.getItem("stockObjects")).length-1].articleURL = response1[0].url;
             // Adds the article headline and URL into the latest stock object
         
@@ -235,7 +241,7 @@ function buildiexURLs(){
 }
 
 function displayHistory() {
-    if(JSON.parse(localStorage.getItem("stockObjects")) != null || JSON.parse(localStorage.getItem("stockObjects")) != ""){
+    if(JSON.parse(localStorage.getItem("stockObjects")) != null){
     $(".stock-displayed").detach();
     for(var i = 0; i < JSON.parse(localStorage.getItem("stockObjects")).length; i++){
         $(".stock-table").prepend('<tr class="stock-displayed stock-displayed'+i+'"><td>'+JSON.parse(localStorage.getItem("stockObjects"))[i].name+'</td><td>$'+JSON.parse(localStorage.getItem("stockObjects"))[i].latestPrice+'</td><td>$'+JSON.parse(localStorage.getItem("stockObjects"))[i].high+'</td><td>$'+JSON.parse(localStorage.getItem("stockObjects"))[i].low+'</td><td>$'+JSON.parse(localStorage.getItem("stockObjects"))[i].open+'</td><td>$'+JSON.parse(localStorage.getItem("stockObjects"))[i].close+'</td><td><a href="'+ JSON.parse(localStorage.getItem("stockObjects"))[i].articleURL +'">'+JSON.parse(localStorage.getItem("stockObjects"))[i].headline+'</a></td><td><button class="clear-btn clear-btn'+i+'">Remove</button></td></tr>');
@@ -298,3 +304,6 @@ displayHistory();
 
 // working financialmodelingprep URL:
 // https://financialmodelingprep.com/api/v3/company/stock/list?apikey=50cb9e8f707557d71a23370f6431ed64
+
+// George's api-key: 50cb9e8f707557d71a23370f6431ed64
+// Jonghyun's api-key: 513abe965cedbb3357ade6b1f1b12dc2
