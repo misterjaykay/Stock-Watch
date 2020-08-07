@@ -74,6 +74,16 @@ body {
     border-width: 1px;
 }
 
+/* trying to get the arrows to stay inside currency exchange at laptop 1024px viewport*/
+/* .stock-table-container {
+    overflow-x: scroll;
+    border-collapse: collapse;
+} */
+
+.currency-table-container {
+    overflow: scroll;
+}
+
 /* currency exchange table */
 .currency-table th, .currency-table td {   
     padding-right: 15px;

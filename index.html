@@ -73,49 +73,52 @@
 
             <!-- right hand column to include currency exchange -->
             <div class="column is-3 mt-4">
-                <section class="section box box-borderline">
-                    <h4 class="box-header title is-4">Currency Exchange</h4>
-                    <hr>
-                    <h5 class="box-header title is-6">One U.S Dollar Equals</h5>
-                    <table class="currency-table">
-                        <tr>
-                            <th>Currency</th>
-                            <th>Value</th>
-                            <th>+/-</th>
-                        </tr>
-                        <tr>
-                            <td>EUR</td>
-                            <td id="euroRate"></td>
-                            <td id="eurArrow"></td>
-                        </tr>
-                        <tr>
-                            <td>JPY</td>
-                            <td id="jpyRate"></td>
-                            <td id="jpyArrow"></td>
-                        </tr>
-                        <tr>
-                            <td>GBP</td>
-                            <td id="gbpRate"></td>
-                            <td id="gbpArrow"></td>
-                        </tr>
-                        <tr>
-                            <td>CAD</td>
-                            <td id="cadRate"></td>
-                            <td id="cadArrow"></td>
-                        </tr>
-                        <tr>
-                            <td>KWD</td>
-                            <td id="kwdRate"></td>
-                            <td id="kwdArrow"></td>
-                        </tr>
-                        <tr>
-                            <td>INR</td>
-                            <td id="inrRate"></td>
-                            <td id="inrArrow"></td>
-                        </tr>
-                    </table>
-                </section>
-
+                  
+                    <section class="section box box-borderline">
+                        <h4 class="box-header title is-4">Currency Exchange</h4>
+                        <hr>
+                        <h5 class="box-header title is-6">One U.S Dollar Equals</h5>
+                        <div class="container currency-exchange-container"> 
+                            <table class="currency-table">
+                                <tr>
+                                    <th>Currency</th>
+                                    <th>Value</th>
+                                    <th>+/-</th>
+                                </tr>
+                                <tr>
+                                    <td>EUR</td>
+                                    <td id="euroRate"></td>
+                                    <td id="eurArrow"></td>
+                                </tr>
+                                <tr>
+                                    <td>JPY</td>
+                                    <td id="jpyRate"></td>
+                                    <td id="jpyArrow"></td>
+                                </tr>
+                                <tr>
+                                    <td>GBP</td>
+                                    <td id="gbpRate"></td>
+                                    <td id="gbpArrow"></td>
+                                </tr>
+                                <tr>
+                                    <td>CAD</td>
+                                    <td id="cadRate"></td>
+                                    <td id="cadArrow"></td>
+                                </tr>
+                                <tr>
+                                    <td>KWD</td>
+                                    <td id="kwdRate"></td>
+                                    <td id="kwdArrow"></td>
+                                </tr>
+                                <tr>
+                                    <td>INR</td>
+                                    <td id="inrRate"></td>
+                                    <td id="inrArrow"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </section>
+                </div>        
             </div>
         </div>
 
@@ -160,18 +163,20 @@
                     <!--your search history header-->
                     <h4 class="box-header title is-4">Your Search History</h4>
                     <hr>
-                    <table class="stock-table">
-                        <tr class="table-heading">
-                            <th>Company</th>
-                            <th>Latest Price</th>
-                            <th>Daily High</th>
-                            <th>Daily Low</th>
-                            <th>Opening Price</th>
-                            <th>Closing Price</th>
-                            <th>Latest Article</th>
-                            <th class="button-padding"></th>
-                        </tr>
-                    </table>
+                    <div class="container stock-table-container">
+                        <table class="stock-table">
+                            <tr class="table-heading">
+                                <th>Company</th>
+                                <th>Latest Price</th>
+                                <th>Daily High</th>
+                                <th>Daily Low</th>
+                                <th>Opening Price</th>
+                                <th>Closing Price</th>
+                                <th>Latest Article</th>
+                                <th class="button-padding"></th>
+                            </tr>
+                        </table>
+                    </div>    
                 </section>
             </div>
         </div>
