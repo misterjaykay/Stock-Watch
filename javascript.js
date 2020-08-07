@@ -1,13 +1,16 @@
 //////////////////// CURRENT TIME CODE
 // get the current time using moment.js
 // and using setInterval to update the time lively
-var update = setInterval( function() {  
+function setCurrentTime() {
     var localTime  = moment.utc().toDate();
     var currentTime = moment(localTime).format("HH:mm:ss MM/DD/YY");
     $(".current-time").text(currentTime);
-
+}
+setCurrentTime();
+var clockUpdate = setInterval( function() {  
+    setCurrentTime();
 }, 1000)
-setInterval(update, 1000);
+setInterval(clockUpdate, 1000);
 
 
 //////////////////// CURRENCY EXCHANGE CODE

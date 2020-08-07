@@ -318,6 +318,12 @@ function renderTopStock() {
 }
 
 renderTopStock();
+var update = setInterval( function() {  
+    $(".card-top-stock").empty();
+    renderTopStock();
+}, 300000);
+setInterval(update, 300000);
+
 if(localStorage.getItem("stockObjects") != null){
     displayHistory();
 }
