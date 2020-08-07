@@ -238,6 +238,9 @@ $(".search-btn").on("click", function(event) {
                 loopIndex++;
             }
             $(".stock-displayed"+removeIndex).remove();
+            var localArr = JSON.parse(localStorage.getItem("stockObjects"))
+            localArr.splice(removeIndex, 1);
+            localStorage.setItem("stockObjects", JSON.stringify(localArr));
         
         })
         })
