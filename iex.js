@@ -6,7 +6,7 @@ $(document).ready(function(){
     var quoteURL = "/quote";
     var newsURLBase = "/news/last/1";
     var intraDayURLBase = "/intraday-prices";
-    var stockListURL = "https://financialmodelingprep.com/api/v3/company/stock/list?apikey=513abe965cedbb3357ade6b1f1b12dc2";
+    var stockListURL = "https://financialmodelingprep.com/api/v3/company/stock/list?apikey=e38cad2517e0863f66ce1ed61c8fec11";
     var baseObject = {"name": "", "symbol":"", "latestPrice":"", "high":"", "low":"", "open":"", "close":"", "articleURL": "", "articleHeadline": ""};
     localStorage.setItem("baseObject", JSON.stringify(baseObject))
     
@@ -337,5 +337,6 @@ if(localStorage.getItem("stockObjects") != null){
 
 // George's api-key: 50cb9e8f707557d71a23370f6431ed64
 // Jonghyun's api-key: 513abe965cedbb3357ade6b1f1b12dc2
+// Ed's api-key: e38cad2517e0863f66ce1ed61c8fec11
 
 })
