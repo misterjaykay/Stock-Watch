@@ -48,3 +48,6 @@ THEN it is displayed so I can plainly view it and compare it with others
 
 # Content Preview
 ![Index Html](assets/images/screenshot.png)
+
+# Powerpoint Presentation
+https://drive.google.com/file/d/1EhFNla_0NU8vooDPXNW5gW2Je_1a1uvL/view?usp=sharing
