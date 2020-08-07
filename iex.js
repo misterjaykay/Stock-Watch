@@ -118,7 +118,9 @@ $(".search-btn").on("click", function(event) {
             }
         }
     
-    
+        localStorage.removeItem("matchedSymbol");
+        localStorage.removeItem("matchedName");
+
         buildiexURLs(); // Builds all URLs using the saved latestSymbol
    
 
@@ -129,13 +131,16 @@ $(".search-btn").on("click", function(event) {
     }).then(function(response){
         //response holds the info for the latest symbol
 
-        baseObject.name =response.companyName;
+        baseObject.symbol = localStorage.getItem("latestSymbol");
+        baseObject.name = response.companyName;
         baseObject.latestPrice = response.latestPrice;
         baseObject.high = response.high;
         baseObject.low = response.low;
         baseObject.open = response.open;
         baseObject.close = response.close;
         // uses the stockObject template to hold all values before they get saved
+
+        localStorage.removeItem("latestSymbol");
 
         if(localStorage.getItem("stockObjects") == null){
             var localArr = [baseObject];
@@ -180,18 +185,21 @@ $(".search-btn").on("click", function(event) {
             url: newsURL,
             method: "GET"
         }).then(function(response1){
-            console.log(response1[0].headline);
-            console.log("Headline:" +JSON.parse(localStorage.getItem("stockObjects"))[JSON.parse(localStorage.getItem("stockObjects")).length-1].articleHeadline+";")
-            JSON.parse(localStorage.getItem("stockObjects"))[JSON.parse(localStorage.getItem("stockObjects")).length-1].articleHeadline= response1[0].headline;
-            console.log("Headline2:" +JSON.parse(localStorage.getItem("stockObjects"))[JSON.parse(localStorage.getItem("stockObjects")).length-1].articleHeadline+";")
-            JSON.parse(localStorage.getItem("stockObjects"))[JSON.parse(localStorage.getItem("stockObjects")).length-1].articleURL = response1[0].url;
-            // Adds the article headline and URL into the latest stock object
+            
+            var localArr = JSON.parse(localStorage.getItem("stockObjects"));
+            console.log("local1:"+ localArr);
+            localArr[JSON.parse(localStorage.getItem("stockObjects")).length-1].articleHeadline = response1[0].headline;
+            localArr[JSON.parse(localStorage.getItem("stockObjects")).length-1].articleURL = response1[0].url;
+            console.log("local2:"+localArr[JSON.parse(localStorage.getItem("stockObjects")).length-1]);
+            console.log("local3:"+localArr[JSON.parse(localStorage.getItem("stockObjects")).length-1].articleURL);
+            // Adds the article headline and URL into the last stock Object in the stockObjects array held in a local variable
+            localStorage.setItem("stockObjects", JSON.stringify(localArr));
         
         displayStock();
         function displayStock(){
             $(".stock-displayed").detach();
             for(var i = 0; i < JSON.parse(localStorage.getItem("stockObjects")).length; i++){
-            $(".stock-table").prepend('<tr class="stock-displayed stock-displayed'+i+'"><td>'+JSON.parse(localStorage.getItem("stockObjects"))[i].name+'</td><td>$'+JSON.parse(localStorage.getItem("stockObjects"))[i].latestPrice+'</td><td>$'+JSON.parse(localStorage.getItem("stockObjects"))[i].high+'</td><td>$'+JSON.parse(localStorage.getItem("stockObjects"))[i].low+'</td><td>$'+JSON.parse(localStorage.getItem("stockObjects"))[i].open+'</td><td>$'+JSON.parse(localStorage.getItem("stockObjects"))[i].close+'</td><td><a href="'+ JSON.parse(localStorage.getItem("stockObjects"))[i].articleURL +'">'+JSON.parse(localStorage.getItem("stockObjects"))[i].headline+'</a></td><td><button class="clear-btn clear-btn'+i+'">Remove</button></td></tr>');
+            $(".stock-table").prepend('<tr class="stock-displayed stock-displayed'+i+'"><td>'+JSON.parse(localStorage.getItem("stockObjects"))[i].name+'</td><td>$'+JSON.parse(localStorage.getItem("stockObjects"))[i].latestPrice+'</td><td>$'+JSON.parse(localStorage.getItem("stockObjects"))[i].high+'</td><td>$'+JSON.parse(localStorage.getItem("stockObjects"))[i].low+'</td><td>$'+JSON.parse(localStorage.getItem("stockObjects"))[i].open+'</td><td>$'+JSON.parse(localStorage.getItem("stockObjects"))[i].close+'</td><td><a href="'+ JSON.parse(localStorage.getItem("stockObjects"))[i].articleURL +'">'+JSON.parse(localStorage.getItem("stockObjects"))[i].articleHeadline+'</a></td><td><button class="clear-btn clear-btn'+i+'">Remove</button></td></tr>');
             } //creates a table row for the stock searched and adds all info at once from local storage
 
             $(".table-heading").remove();
@@ -221,17 +229,14 @@ $(".search-btn").on("click", function(event) {
     })
 })
 
-console.log(localStorage.getItem("stockObjects"));
-console.log(JSON.parse(localStorage.getItem("stockObjects")));
-
 $(".clear-btn-all").on("click", function(event){
     event.preventDefault();
 
     $(".stock-displayed").detach();
     localStorage.removeItem("stockObjects");
     localStorage.removeItem("latestSymbol");
-    localStorage.removeItem("matchedName")
-    localStorage.removeItem("matchedSymbol")
+    localStorage.removeItem("matchedName");
+    localStorage.removeItem("matchedSymbol");
 })
 
 function buildiexURLs(){
@@ -244,7 +249,7 @@ function displayHistory() {
     if(JSON.parse(localStorage.getItem("stockObjects")) != null){
     $(".stock-displayed").detach();
     for(var i = 0; i < JSON.parse(localStorage.getItem("stockObjects")).length; i++){
-        $(".stock-table").prepend('<tr class="stock-displayed stock-displayed'+i+'"><td>'+JSON.parse(localStorage.getItem("stockObjects"))[i].name+'</td><td>$'+JSON.parse(localStorage.getItem("stockObjects"))[i].latestPrice+'</td><td>$'+JSON.parse(localStorage.getItem("stockObjects"))[i].high+'</td><td>$'+JSON.parse(localStorage.getItem("stockObjects"))[i].low+'</td><td>$'+JSON.parse(localStorage.getItem("stockObjects"))[i].open+'</td><td>$'+JSON.parse(localStorage.getItem("stockObjects"))[i].close+'</td><td><a href="'+ JSON.parse(localStorage.getItem("stockObjects"))[i].articleURL +'">'+JSON.parse(localStorage.getItem("stockObjects"))[i].headline+'</a></td><td><button class="clear-btn clear-btn'+i+'">Remove</button></td></tr>');
+        $(".stock-table").prepend('<tr class="stock-displayed stock-displayed'+i+'"><td>'+JSON.parse(localStorage.getItem("stockObjects"))[i].name+'</td><td>$'+JSON.parse(localStorage.getItem("stockObjects"))[i].latestPrice+'</td><td>$'+JSON.parse(localStorage.getItem("stockObjects"))[i].high+'</td><td>$'+JSON.parse(localStorage.getItem("stockObjects"))[i].low+'</td><td>$'+JSON.parse(localStorage.getItem("stockObjects"))[i].open+'</td><td>$'+JSON.parse(localStorage.getItem("stockObjects"))[i].close+'</td><td><a href="'+ JSON.parse(localStorage.getItem("stockObjects"))[i].articleURL +'">'+JSON.parse(localStorage.getItem("stockObjects"))[i].articleHeadline+'</a></td><td><button class="clear-btn clear-btn'+i+'">Remove</button></td></tr>');
         }  //creates a table row for each of the stocks searched and adds all info for each row at once from local storage
 
     $(".table-heading").remove();
